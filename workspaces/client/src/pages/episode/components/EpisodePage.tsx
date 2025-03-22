@@ -47,19 +47,67 @@ export const EpisodePage = () => {
     <>
       <title>{`${episode.title} - ${episode.series.title} - AremaTV`}</title>
 
-      <div className="px-[24px] py-[48px]">
+      <div style={{ padding: "48px 24px" }}>
         <Flipped stagger flipId={`episode-${episode.id}`}>
-          <div className="m-auto mb-[16px] h-auto w-full max-w-[1280px] outline outline-[1px] outline-[#212121]">
+          <div
+            style={{
+              height: "auto",
+              margin: "auto",
+              marginBottom: "16px",
+              maxWidth: "1280px",
+              outline: "1px solid #212121",
+              width: "100%",
+            }}
+          >
             {isSignInRequired ? (
-              <div className="relative size-full">
-                <img alt="" className="h-auto w-full" decoding="sync" loading="eager" src={thumbUrl(episode.thumbnailUrl, "lg")} />
+              <div style={{ height: "100%", position: "relative", width: "100%" }}>
+                <img
+                  alt=""
+                  decoding="sync"
+                  loading="eager"
+                  src={thumbUrl(episode.thumbnailUrl, "lg")}
+                  style={{ height: "auto", width: "100%" }}
+                />
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#00000077] p-[24px]">
-                  <p className="mb-[32px] text-[24px] font-bold text-[#ffffff]">
+                <div
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "#00000077",
+                    bottom: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    left: 0,
+                    padding: "24px",
+                    position: "absolute",
+                    right: 0,
+                    top: 0,
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "#ffffff",
+                      fontSize: "24px",
+                      fontWeight: "bold",
+                      marginBottom: "32px",
+                    }}
+                  >
                     プレミアムエピソードの視聴にはログインが必要です
                   </p>
                   <button
-                    className="block flex w-[160px] flex-row items-center justify-center rounded-[4px] bg-[#1c43d1] p-[12px] text-[14px] font-bold text-[#ffffff] disabled:opacity-50"
+                    style={{
+                      alignItems: "center",
+                      backgroundColor: "#1c43d1",
+                      borderRadius: "4px",
+                      color: "#ffffff",
+                      display: "flex",
+                      flexDirection: "row",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      justifyContent: "center",
+                      padding: "12px",
+                      width: "160px",
+                    }}
                     type="button"
                     onClick={authActions.openSignInDialog}
                   >
@@ -71,23 +119,85 @@ export const EpisodePage = () => {
               <Suspense
                 fallback={
                   <AspectRatio ratioHeight={9} ratioWidth={16}>
-                    <div className="grid size-full">
+                    <div
+                      style={{
+                        display: "grid",
+                        height: "100%",
+                        width: "100%",
+                      }}
+                    >
                       <img
                         alt=""
-                        className="size-full place-self-stretch [grid-area:1/-1]"
-                        decoding="sync" loading="eager" src={thumbUrl(episode.thumbnailUrl, "lg")}
+                        decoding="sync"
+                        loading="eager"
+                        src={thumbUrl(episode.thumbnailUrl, "lg")}
+                        style={{
+                          gridArea: "1 / -1",
+                          height: "100%",
+                          placeSelf: "stretch",
+                          width: "100%",
+                        }}
                       />
-                      <div className="size-full place-self-stretch bg-[#00000077] [grid-area:1/-1]" />
+                      <div
+                        style={{
+                          backgroundColor: "#00000077",
+                          gridArea: "1 / -1",
+                          height: "100%",
+                          placeSelf: "stretch",
+                          width: "100%",
+                        }}
+                      />
                       {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-                      <svg height="1em" style={{ color: "#ffffff", fontSize: "48px", gridArea: "1 / -1", placeSelf: "center" }} viewBox="0 0 24 24" width="1em"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
-                          <path d="M12 3c4.97 0 9 4.03 9 9" strokeDasharray="16" strokeDashoffset="16">
-                            <animate attributeName="stroke-dashoffset" dur="0.3s" fill="freeze" values="16;0" />
-                            <animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12" />
+                      <svg
+                        height="1em"
+                        style={{
+                          color: "#ffffff",
+                          fontSize: "48px",
+                          gridArea: "1 / -1",
+                          placeSelf: "center",
+                        }}
+                        viewBox="0 0 24 24"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                        >
+                          <path
+                            d="M12 3c4.97 0 9 4.03 9 9"
+                            strokeDasharray="16"
+                            strokeDashoffset="16"
+                          >
+                            <animate
+                              attributeName="stroke-dashoffset"
+                              dur="0.3s"
+                              fill="freeze"
+                              values="16;0"
+                            />
+                            <animateTransform
+                              attributeName="transform"
+                              dur="1.5s"
+                              repeatCount="indefinite"
+                              type="rotate"
+                              values="0 12 12;360 12 12"
+                            />
                           </path>
-                          <path d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z" strokeDasharray="64" strokeDashoffset="64" strokeOpacity=".3">
-                            <animate attributeName="stroke-dashoffset" dur="1.2s" fill="freeze" values="64;0" />
+                          <path
+                            d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z"
+                            strokeDasharray="64"
+                            strokeDashoffset="64"
+                            strokeOpacity=".3"
+                          >
+                            <animate
+                              attributeName="stroke-dashoffset"
+                              dur="1.2s"
+                              fill="freeze"
+                              values="64;0"
+                            />
                           </path>
                         </g>
                       </svg>
@@ -95,15 +205,22 @@ export const EpisodePage = () => {
                   </AspectRatio>
                 }
               >
-                <div className="relative size-full">
+                <div style={{ height: "100%", position: "relative", width: "100%" }}>
                   <Player
-                    className="size-full"
                     playerRef={playerRef}
                     playerType={PlayerType.HlsJS}
                     playlistUrl={`/streams/episode/${episode.id}/playlist.m3u8`}
+                    style={{ height: "100%", width: "100%" }}
                   />
 
-                  <div className="absolute inset-x-0 bottom-0">
+                  <div
+                    style={{
+                      bottom: 0,
+                      left: 0,
+                      position: "absolute",
+                      right: 0,
+                    }}
+                  >
                     <PlayerController episode={episode} />
                   </div>
                 </div>
@@ -112,33 +229,46 @@ export const EpisodePage = () => {
           </div>
         </Flipped>
 
-        <div className="mb-[24px]">
-          <div className="text-[16px] text-[#ffffff]">
+        <div style={{ marginBottom: "24px" }}>
+          <div style={{ color: "#ffffff", fontSize: "16px" }}>
             <Ellipsis ellipsis reflowOnResize maxLine={1} text={episode.series.title} visibleLine={1} />
           </div>
-          <h1 className="mt-[8px] text-[22px] font-bold text-[#ffffff]">
+          <h1 style={{ color: "#ffffff", fontSize: "22px", fontWeight: "bold", marginTop: "8px" }}>
             <Ellipsis ellipsis reflowOnResize maxLine={2} text={episode.title} visibleLine={2} />
           </h1>
           {episode.premium ? (
-            <div className="mt-[8px]">
-              <span className="inline-flex items-center justify-center rounded-[4px] bg-[#1c43d1] p-[4px] text-[10px] text-[#ffffff]">
+            <div style={{ marginTop: "8px" }}>
+              <span
+                style={{
+                  alignItems: "center",
+                  backgroundColor: "#1c43d1",
+                  borderRadius: "4px",
+                  color: "#ffffff",
+                  display: "inline-flex",
+                  fontSize: "10px",
+                  justifyContent: "center",
+                  padding: "4px",
+                }}
+              >
                 プレミアム
               </span>
             </div>
           ) : null}
-          <div className="mt-[16px] text-[16px] text-[#999999]">
+          <div style={{ color: "#999999", fontSize: "16px", marginTop: "16px" }}>
             <Ellipsis ellipsis reflowOnResize maxLine={3} text={episode.description} visibleLine={3} />
           </div>
         </div>
 
         {modules[0] != null ? (
-          <div className="mt-[24px]">
+          <div style={{ marginTop: "24px" }}>
             <RecommendedSection module={modules[0]} />
           </div>
         ) : null}
 
-        <div className="mt-[24px]">
-          <h2 className="mb-[12px] text-[22px] font-bold text-[#ffffff]">エピソード</h2>
+        <div style={{ marginTop: "24px" }}>
+          <h2 style={{ color: "#ffffff", fontSize: "22px", fontWeight: "bold", marginBottom: "12px" }}>
+            エピソード
+          </h2>
           <SeriesEpisodeList episodes={episode.series.episodes} selectedEpisodeId={episode.id} />
         </div>
       </div>

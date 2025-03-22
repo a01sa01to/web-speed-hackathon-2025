@@ -208,6 +208,9 @@ export async function registerApi(app: FastifyInstance): Promise<void> {
       const database = getDatabase();
 
       const episode = await database.query.episode.findFirst({
+        orderBy(episode, { asc }) {
+          return asc(episode.order);
+        },
         where(episode, { eq }) {
           return eq(episode.id, req.params.episodeId);
         },
