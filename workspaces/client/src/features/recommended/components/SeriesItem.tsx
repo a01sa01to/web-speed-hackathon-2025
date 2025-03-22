@@ -31,7 +31,7 @@ export const SeriesItem = ({ series }: Props) => {
                 }}
               >
                 <Flipped stagger flipId={isTransitioning ? `series-${series.id}` : 0}>
-                  <img alt="" decoding="async" loading="lazy" src={thumbUrl(series.thumbnailUrl, "md")} style={{ height: 'auto', width: '100%' }} />
+                  <img alt="" decoding="async" loading="lazy" src={thumbUrl(series.thumbnailUrl, "md")} style={{ aspectRatio: "16 / 9", height: 'auto', width: '100%' }} />
                 </Flipped>
               </div>
               <div style={{ padding: '8px' }}>

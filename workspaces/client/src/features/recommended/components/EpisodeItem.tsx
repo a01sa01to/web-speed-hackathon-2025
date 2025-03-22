@@ -48,7 +48,7 @@ export const EpisodeItem = ({ episode }: Props) => {
                       content: '';
                     }`}
                   </style>
-                  <img alt="" decoding="async" loading="lazy" src={thumbUrl(episode.thumbnailUrl, "md")} style={{ height: 'auto', width: '100%' }} />
+                  <img alt="" decoding="async" loading="lazy" src={thumbUrl(episode.thumbnailUrl, "md")} style={{ aspectRatio: "16 / 9", height: 'auto', width: '100%' }} />
                   {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
                   <svg height="1em"
                     style={{

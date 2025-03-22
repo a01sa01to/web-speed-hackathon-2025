@@ -70,7 +70,7 @@ export const JumbotronSection = ({ module }: Props) => {
               </div>
 
               <Flipped stagger flipId={isTransitioning ? `episode-${episode.id}` : 0}>
-                <div style={{ flexGrow: 0, flexShrink: 0, height: '100%', width: 'auto' }}>
+                <div style={{ aspectRatio: "16 / 9", flexGrow: 0, flexShrink: 0, height: '100%', width: 'auto' }}>
                   <Player
                     loop
                     playerRef={playerRef}

@@ -27,10 +27,10 @@ export const CarouselSection = ({ module }: Props) => {
           ref={containerRefForItemWidth}
           data-scroll-restore={`carousel-${module.id}`}
           style={{
+            columnGap: "12px",
             // display: "grid",
             display: "flex",
             flexDirection: "row",
-            colGap: "12px",
             // gridTemplateColumns: "repeat(auto-fill, minmax(276px, 1fr))",
             marginLeft: "-24px",
             marginRight: "-24px",
