@@ -1,8 +1,8 @@
+import { useId } from "react"
 import Ellipsis from 'react-ellipsis-component';
 import { Flipped } from 'react-flip-toolkit';
 import { NavLink } from 'react-router';
 
-import { Hoverable } from '@wsh-2025/client/src/features/layout/components/Hoverable';
 import { thumbUrl } from '@wsh-2025/client/src/utils/thumb';
 
 interface Props {
@@ -17,11 +17,27 @@ interface Props {
 }
 
 export const SeriesEpisodeItem = ({ episode, selected }: Props) => {
+  const linkId = useId().replaceAll(":", "_")
+
   return (
-    <Hoverable classNames={{ hovered: 'opacity-75' }}>
+    <>
+      <style>{`
+        .${linkId} {
+          cursor: pointer;
+          display: flex;
+          width: 100%;
+          flex-direction: row;
+          align-items: start;
+          justify-content: space-between;
+          column-gap: 16px;
+        }
+        .${linkId}:hover {
+          opacity: 0.75;
+        }
+      `}</style>
       <NavLink
         viewTransition
-        className="block flex w-full flex-row items-start justify-between gap-x-[16px]"
+        className={linkId}
         to={`/episodes/${episode.id}`}
       >
         {({ isTransitioning }) => {
@@ -64,6 +80,6 @@ export const SeriesEpisodeItem = ({ episode, selected }: Props) => {
           );
         }}
       </NavLink>
-    </Hoverable>
+    </>
   );
 };

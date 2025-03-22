@@ -1,6 +1,6 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec';
 import type * as schema from '@wsh-2025/schema/src/api/schema';
-import { useRef } from 'react';
+import { useId, useRef } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import { Flipped } from 'react-flip-toolkit';
 import { NavLink } from 'react-router';
@@ -11,33 +11,39 @@ import { Player } from '../../player/components/Player';
 import { PlayerType } from '../../player/constants/player_type';
 import type { PlayerWrapper } from '../../player/interfaces/player_wrapper';
 
-import { Hoverable } from '@wsh-2025/client/src/features/layout/components/Hoverable';
-
 interface Props {
   module: ArrayValues<StandardSchemaV1.InferOutput<typeof schema.getRecommendedModulesResponse>>;
 }
 
 export const JumbotronSection = ({ module }: Props) => {
+  const linkId = useId().replaceAll(":", "_")
   const playerRef = useRef<PlayerWrapper>(null);
 
   const episode = module.items[0]?.episode;
   invariant(episode);
 
   return (
-    <Hoverable classNames={{ hovered: 'opacity-50' }}>
+    <>
+      <style>{`
+      .${linkId} {
+        cursor: pointer;
+        align-items: center;
+        background-color: #171717;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        height: 260px;
+        justify-content: center;
+        overflow: hidden;
+        width: 100%;
+      }
+      .${linkId}:hover {
+        opacity: 0.5;
+      }
+    `}</style>
       <NavLink
         viewTransition
-        style={{
-          alignItems: 'center',
-          backgroundColor: '#171717',
-          borderRadius: '8px',
-          display: 'flex',
-          flexDirection: 'row',
-          height: '260px',
-          justifyContent: 'center',
-          overflow: 'hidden',
-          width: '100%',
-        }}
+        className={linkId}
         to={`/episodes/${episode.id}`}
       >
         {({ isTransitioning }) => {
@@ -84,6 +90,6 @@ export const JumbotronSection = ({ module }: Props) => {
           );
         }}
       </NavLink>
-    </Hoverable>
+    </>
   );
 };
