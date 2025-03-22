@@ -74,7 +74,7 @@ export const EpisodePage = () => {
                       <img
                         alt=""
                         className="size-full place-self-stretch [grid-area:1/-1]"
-                        src={episode.thumbnailUrl}
+                        src={episode.thumbnailUrl.split('?')[0] ?? ""}
                       />
                       <div className="size-full place-self-stretch bg-[#00000077] [grid-area:1/-1]" />
                       <div className="i-line-md:loading-twotone-loop size-[48px] place-self-center text-[#ffffff] [grid-area:1/-1]" />
