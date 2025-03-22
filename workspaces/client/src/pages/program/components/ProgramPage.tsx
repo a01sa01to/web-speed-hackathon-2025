@@ -22,16 +22,14 @@ export const prefetch = async (store: ReturnType<typeof createStore>, { programI
   invariant(programId);
 
   const now = DateTime.now();
-  const since = now.startOf('day').toISO();
   const until = now.endOf('day').toISO();
 
   const program = await store.getState().features.program.fetchProgramById({ programId });
-  const channels = store.getState().features.channel.fetchChannels();
-  const timetable = await store.getState().features.timetable.fetchTimetable({ since, until });
+  const timetable = await store.getState().features.timetable.fetchTimetable({ channelId: program.channelId, since: program.endAt, until });
   const modules = await store
     .getState()
     .features.recommended.fetchRecommendedModulesByReferenceId({ limit: 1, referenceId: programId });
-  return { channels, modules, program, timetable };
+  return { modules, program, timetable };
 };
 
 export const ProgramPage = () => {

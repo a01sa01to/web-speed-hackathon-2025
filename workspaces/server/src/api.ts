@@ -378,13 +378,21 @@ export async function registerApi(app: FastifyInstance): Promise<void> {
             }
           }
         },
-        where(program, { between, sql }) {
+        where(program, { and, between, eq, sql }) {
           // 競技のため、時刻のみで比較する
-          return between(
-            program.startAt,
-            sql`time(${req.query.since}, '+9 hours')`,
-            sql`time(${req.query.until}, '+9 hours')`,
-          );
+          return req.query.channelId ? and(
+            eq(program.channelId, req.query.channelId),
+            between(
+              program.startAt,
+              sql`time(${req.query.since}, '+9 hours')`,
+              sql`time(${req.query.until}, '+9 hours')`,
+            ),
+          ) :
+            between(
+              program.startAt,
+              sql`time(${req.query.since}, '+9 hours')`,
+              sql`time(${req.query.until}, '+9 hours')`,
+            );
         },
       });
       reply.code(200).send(programs);

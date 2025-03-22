@@ -1,5 +1,5 @@
 import { createFetch, createSchema } from '@better-fetch/fetch';
-import { StandardSchemaV1 } from '@standard-schema/spec';
+import type { StandardSchemaV1 } from '@standard-schema/spec';
 import * as schema from '@wsh-2025/schema/src/api/schema';
 
 import { schedulePlugin } from '@wsh-2025/client/src/features/requests/schedulePlugin';
@@ -23,9 +23,9 @@ interface TimetableService {
 }
 
 export const timetableService: TimetableService = {
-  async fetchTimetable({ since, until }) {
+  async fetchTimetable({ channelId, since, until }) {
     const data = await $fetch('/timetable', {
-      query: { since, until },
+      query: channelId ? { channelId, since, until } : { since, until },
     });
     return data;
   },

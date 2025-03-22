@@ -1,8 +1,8 @@
 import { lens } from '@dhmk/zustand-lens';
-import { StandardSchemaV1 } from '@standard-schema/spec';
-import * as schema from '@wsh-2025/schema/src/api/schema';
+import type { StandardSchemaV1 } from '@standard-schema/spec';
+import type * as schema from '@wsh-2025/schema/src/api/schema';
 import { produce } from 'immer';
-import { ArrayValues } from 'type-fest';
+import type { ArrayValues } from 'type-fest';
 
 import { timetableService } from '@wsh-2025/client/src/features/timetable/services/timetableService';
 
@@ -14,6 +14,7 @@ interface TimetableState {
 
 interface TimetableActions {
   fetchTimetable: (params: {
+    channelId?: string;
     since: string;
     until: string;
   }) => Promise<StandardSchemaV1.InferOutput<typeof schema.getTimetableResponse>>;
@@ -21,8 +22,8 @@ interface TimetableActions {
 
 export const createTimetableStoreSlice = () => {
   return lens<TimetableState & TimetableActions>((set) => ({
-    fetchTimetable: async ({ since, until }) => {
-      const programs = await timetableService.fetchTimetable({ since, until });
+    fetchTimetable: async ({ channelId, since, until }) => {
+      const programs = await timetableService.fetchTimetable(channelId ? { channelId, since, until } : { since, until });
       set((state) => {
         return produce(state, (draft) => {
           draft.programs = {};

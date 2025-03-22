@@ -156,6 +156,7 @@ export const getSeriesByIdResponse = series.extend({
 export const getTimetableRequestQuery = z.object({
   since: z.coerce.string().openapi({ format: 'date-time' }),
   until: z.coerce.string().openapi({ format: 'date-time' }),
+  channelId: z.string().optional(),
 });
 export const getTimetableResponse = z.array(program.pick({
   id: true,
