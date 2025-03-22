@@ -2,11 +2,11 @@ import { DateTime } from 'luxon';
 import { useEffect, useRef } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import { Flipped } from 'react-flip-toolkit';
-import { Link, Params, useNavigate, useParams } from 'react-router';
+import { Link, type Params, useNavigate, useParams } from 'react-router';
 import { useUpdate } from 'react-use';
 import invariant from 'tiny-invariant';
 
-import { createStore } from '@wsh-2025/client/src/app/createStore';
+import type { createStore } from '@wsh-2025/client/src/app/createStore';
 import { Player } from '@wsh-2025/client/src/features/player/components/Player';
 import { PlayerType } from '@wsh-2025/client/src/features/player/constants/player_type';
 import { useProgramById } from '@wsh-2025/client/src/features/program/hooks/useProgramById';
@@ -46,7 +46,7 @@ export const ProgramPage = () => {
     return DateTime.fromISO(program.endAt).equals(DateTime.fromISO(p.startAt));
   });
 
-  const modules = useRecommended({ referenceId: programId });
+  const modules = useRecommended({ limit: 1, referenceId: programId });
 
   const playerRef = usePlayerRef();
 

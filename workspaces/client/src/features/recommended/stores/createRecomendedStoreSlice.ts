@@ -1,8 +1,8 @@
 import { lens } from '@dhmk/zustand-lens';
-import { StandardSchemaV1 } from '@standard-schema/spec';
-import * as schema from '@wsh-2025/schema/src/api/schema';
+import type { StandardSchemaV1 } from '@standard-schema/spec';
+import type * as schema from '@wsh-2025/schema/src/api/schema';
 import { produce } from 'immer';
-import { ArrayValues } from 'type-fest';
+import type { ArrayValues } from 'type-fest';
 
 import { recommendedService } from '@wsh-2025/client/src/features/recommended/services/recommendedService';
 
@@ -19,14 +19,15 @@ interface RecommendedState {
 
 interface RecommendedActions {
   fetchRecommendedModulesByReferenceId: (params: {
+    limit?: number;
     referenceId: ReferenceId;
   }) => Promise<StandardSchemaV1.InferOutput<typeof schema.getRecommendedModulesResponse>>;
 }
 
 export const createRecommendedStoreSlice = () => {
   return lens<RecommendedState & RecommendedActions>((set) => ({
-    fetchRecommendedModulesByReferenceId: async ({ referenceId }) => {
-      const modules = await recommendedService.fetchRecommendedModulesByReferenceId({ referenceId });
+    fetchRecommendedModulesByReferenceId: async ({ limit, referenceId }) => {
+      const modules = await recommendedService.fetchRecommendedModulesByReferenceId({ limit, referenceId });
       set((state) => {
         return produce(state, (draft) => {
           draft.references[referenceId] = modules.map((module) => module.id);
