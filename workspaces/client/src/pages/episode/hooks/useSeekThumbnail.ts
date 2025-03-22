@@ -15,7 +15,7 @@ async function getSeekThumbnail({ episode }: Params) {
   if (streamId == null) {
     throw new Error('Invalid stream URL.');
   }
-  return `/streams/${streamId}/preview.jpg`;
+  return `https://wsh2025-a01sa01to.pages.dev/streams/${streamId}/preview.jpg`;
 }
 
 const weakMap = new WeakMap<object, Promise<string>>();

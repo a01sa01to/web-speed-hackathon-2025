@@ -1,8 +1,5 @@
 import { randomBytes } from 'node:crypto';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
-import fastifyStatic from '@fastify/static';
 import dedent from 'dedent';
 import type { FastifyInstance } from 'fastify';
 import { DateTime } from 'luxon';
@@ -18,11 +15,6 @@ function getTime(d: Date): number {
 }
 
 export function registerStreams(app: FastifyInstance): void {
-  app.register(fastifyStatic, {
-    prefix: '/streams/',
-    root: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../streams'),
-  });
-
   app.get<{
     Params: { episodeId: string };
   }>('/streams/episode/:episodeId/playlist.m3u8', async (req, reply) => {
@@ -49,11 +41,11 @@ export function registerStreams(app: FastifyInstance): void {
       #EXT-X-VERSION:3
       #EXT-X-MEDIA-SEQUENCE:1
       ${Array.from({ length: stream.numberOfChunks }, (_, idx) => {
-        return dedent`
+      return dedent`
           #EXTINF:2.000000,
-          /streams/${stream.id}/${String(idx).padStart(3, '0')}.ts
+          https://wsh2025-a01sa01to.pages.dev/streams/${stream.id}/${String(idx).padStart(3, '0')}.ts
         `;
-      }).join('\n')}
+    }).join('\n')}
       #EXT-X-ENDLIST
     `;
 
@@ -117,7 +109,7 @@ export function registerStreams(app: FastifyInstance): void {
         dedent`
           ${chunkIdx === 0 ? '#EXT-X-DISCONTINUITY' : ''}
           #EXTINF:2.000000,
-          /streams/${stream.id}/${String(chunkIdx).padStart(3, '0')}.ts
+          https://wsh2025-a01sa01to.pages.dev/streams/${stream.id}/${String(chunkIdx).padStart(3, '0')}.ts
           #EXT-X-DATERANGE:${[
             `ID="arema-${sequence}"`,
             `START-DATE="${sequenceStartAt.toISOString()}"`,
