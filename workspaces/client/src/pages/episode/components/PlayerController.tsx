@@ -21,6 +21,7 @@ export const PlayerController = ({ episode }: Props) => {
   const [playing, togglePlaying] = usePlaying();
   const [muted, toggleMuted] = useMuted();
   const linkId = useId().replaceAll(":", "_")
+  const groupId = useId().replaceAll(":", "_")
 
   return (
     <>
@@ -29,42 +30,62 @@ export const PlayerController = ({ episode }: Props) => {
           cursor: pointer;
           background: transparent;
           display: block;
-          border-radius: 4px
+          border-radius: 4px;
         }
         .${linkId}:hover {
           background: #ffffff1f;
         }
+        .${groupId}:hover .opa100 {
+          opacity: 1 !important;
+        }
+        .${groupId}:hover .h4 {
+          height: 4px !important;
+        }
+        .focusoutlinenone:focus {
+          outline: none !important;
+        }
     `}</style>
-      <div className="relative h-[120px]">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#212121] to-transparent" />
+      <div style={{ height: "120px", position: "relative" }}>
+        <div style={{ background: "linear-gradient(to top, #212121, transparent)", bottom: 0, left: 0, pointerEvents: "none", position: "absolute", right: 0, top: 0 }} />
 
-        <div className="absolute inset-x-0 bottom-0 px-[12px]">
-          <div className="group relative size-full">
-            <div className="pointer-events-none relative size-full opacity-0 group-hover:opacity-100">
+        <div style={{ bottom: 0, left: 0, paddingLeft: "12px", paddingRight: "12px", position: "absolute", right: 0 }}>
+          <div className={groupId} style={{ height: "100%", position: "relative", width: "100%" }}>
+            <div className="opa100" style={{ height: "100%", opacity: 0, pointerEvents: "none", position: "relative", width: "100%" }}>
               <SeekThumbnail episode={episode} />
             </div>
 
             <Slider.Root
-              className="group relative flex h-[20px] w-full cursor-pointer touch-none select-none flex-row items-center"
+              className={groupId}
               max={duration}
               min={0}
               orientation="horizontal"
+              style={{
+                alignItems: "center",
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "row",
+                height: "20px",
+                position: "relative",
+                touchAction: "none",
+                userSelect: "none",
+                width: "100%",
+              }}
               value={[currentTime]}
               onValueChange={([t]) => {
                 invariant(t);
                 updateCurrentTime(t);
               }}
             >
-              <Slider.Track className="grow-1 relative h-[2px] rounded-[4px] bg-[#999999] group-hover:h-[4px]">
-                <Slider.Range className="absolute h-[2px] rounded-[4px] bg-[#1c43d1] group-hover:h-[4px]" />
+              <Slider.Track className="h4" style={{ background: "#999999", borderRadius: "4px", flexGrow: 1, height: "2px", position: "relative" }}>
+                <Slider.Range className="h4" style={{ background: "#1c43d1", borderRadius: "4px", height: "2px", position: "absolute" }} />
               </Slider.Track>
-              <Slider.Thumb className="block size-[20px] rounded-[10px] bg-[#1c43d1] opacity-0 focus:outline-none group-hover:opacity-100" />
+              <Slider.Thumb className="opa100 focusoutlinenone" style={{ background: "#1c43d1", borderRadius: "10px", display: "block", height: "20px", opacity: 0, width: "20px" }} />
             </Slider.Root>
           </div>
 
-          <div className="flex w-full flex-row items-center justify-between">
-            <div className="flex flex-row items-center">
-              <div className="flex flex-row items-center">
+          <div style={{ alignItems: "center", display: "flex", flexDirection: "row", justifyContent: "space-between", width: "100%" }}>
+            <div style={{ alignItems: "center", display: "flex", flexDirection: "row" }}>
+              <div style={{ alignItems: "center", display: "flex", flexDirection: "row" }}>
                 <button
                   aria-label={playing ? '一時停止する' : '再生する'}
                   className={linkId}
@@ -107,7 +128,7 @@ export const PlayerController = ({ episode }: Props) => {
                   }
                 </button>
 
-                <span className="ml-[4px] block shrink-0 grow-0 text-[12px] font-bold text-[#FFFFFF]">
+                <span style={{ color: "#FFFFFF", display: "block", flexGrow: 0, flexShrink: 0, fontSize: "12px", fontWeight: "bold", marginLeft: "4px" }}>
                   {Duration.fromObject({ seconds: currentTime }).toFormat('mm:ss')}
                   {' / '}
                   {Duration.fromObject({ seconds: duration }).toFormat('mm:ss')}
@@ -115,7 +136,7 @@ export const PlayerController = ({ episode }: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-row items-center">
+            <div style={{ alignItems: "center", display: "flex", flexDirection: "row" }}>
               <button
                 aria-label={muted ? 'ミュート解除する' : 'ミュートする'}
                 className={linkId}

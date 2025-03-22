@@ -115,9 +115,22 @@ export const getEpisodesResponse = z.array(
 export const getEpisodeByIdRequestParams = z.object({
   episodeId: z.string(),
 });
-export const getEpisodeByIdResponse = episode.extend({
-  series: series.extend({
-    episodes: z.array(episode.extend({})),
+export const getEpisodeByIdResponse = episode.pick({
+  premium: true,
+  title: true,
+  id: true,
+  thumbnailUrl: true,
+  description: true,
+}).extend({
+  series: series.pick({ title: true, }).extend({
+    episodes: z.array(episode.pick({
+      description: true,
+      id: true,
+      order: true,
+      premium: true,
+      thumbnailUrl: true,
+      title: true
+    })),
   }),
 });
 
