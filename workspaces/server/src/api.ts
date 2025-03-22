@@ -476,31 +476,40 @@ export async function registerApi(app: FastifyInstance): Promise<void> {
         where(module, { eq }) {
           return eq(module.referenceId, req.params.referenceId);
         },
+        columns: {
+          id: true,
+          title: true,
+          type: true,
+        },
         with: {
           items: {
             orderBy(item, { asc }) {
               return asc(item.order);
             },
+            columns: {
+              id: true,
+            },
             with: {
               series: {
-                with: {
-                  episodes: {
-                    orderBy(episode, { asc }) {
-                      return asc(episode.order);
-                    },
-                  },
-                },
+                columns: {
+                  id: true,
+                  thumbnailUrl: true,
+                  title: true,
+                }
               },
               episode: {
+                columns: {
+                  id: true,
+                  premium: true,
+                  thumbnailUrl: true,
+                  title: true,
+                  description: true,
+                },
                 with: {
                   series: {
-                    with: {
-                      episodes: {
-                        orderBy(episode, { asc }) {
-                          return asc(episode.order);
-                        },
-                      },
-                    },
+                    columns: {
+                      title: true,
+                    }
                   },
                 },
               },

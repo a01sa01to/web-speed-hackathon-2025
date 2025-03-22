@@ -6,7 +6,7 @@ import { z } from 'zod';
 
 import * as databaseSchema from '@wsh-2025/schema/src/database/schema';
 
-function assertSchema<T>(_actual: z.ZodType<NoInfer<T>>, _expected: z.ZodType<T>): void {}
+function assertSchema<T>(_actual: z.ZodType<NoInfer<T>>, _expected: z.ZodType<T>): void { }
 
 const channel = z.object({
   id: z.string().openapi({ format: 'uuid' }),
@@ -179,19 +179,30 @@ export const getRecommendedModulesRequestParams = z.object({
   referenceId: z.string(),
 });
 export const getRecommendedModulesResponse = z.array(
-  recommendedModule.extend({
+  recommendedModule.pick({
+    id: true,
+    title: true,
+    type: true,
+  }).extend({
     items: z.array(
-      recommendedItem.extend({
-        series: series
-          .extend({
-            episodes: z.array(episode.extend({})),
-          })
+      recommendedItem.pick({
+        id: true,
+      }).extend({
+        series: series.pick({
+          id: true,
+          thumbnailUrl: true,
+          title: true,
+        })
           .nullable(),
-        episode: episode
+        episode: episode.pick({
+          id: true,
+          premium: true,
+          thumbnailUrl: true,
+          title: true,
+          description: true,
+        })
           .extend({
-            series: series.extend({
-              episodes: z.array(episode.extend({})),
-            }),
+            series: series.pick({ title: true })
           })
           .nullable(),
       }),
