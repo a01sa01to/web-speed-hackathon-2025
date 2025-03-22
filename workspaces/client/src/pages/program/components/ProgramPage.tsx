@@ -26,7 +26,7 @@ export const prefetch = async (store: ReturnType<typeof createStore>, { programI
   const until = now.endOf('day').toISO();
 
   const program = await store.getState().features.program.fetchProgramById({ programId });
-  const channels = await store.getState().features.channel.fetchChannels();
+  const channels = store.getState().features.channel.fetchChannels();
   const timetable = await store.getState().features.timetable.fetchTimetable({ since, until });
   const modules = await store
     .getState()
