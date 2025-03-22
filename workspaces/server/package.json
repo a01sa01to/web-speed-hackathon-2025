@@ -8,7 +8,8 @@
     "format:eslint": "wireit",
     "format:prettier": "wireit",
     "heroku-start": "wireit",
-    "start": "wireit"
+    "start": "wireit",
+    "mystart": "API_BASE_URL=\"http://localhost:8000/api\" PORT=8000 tsx -r ./loaders/png.cjs ./src/index.ts"
   },
   "dependencies": {
     "@fastify/cookie": "11.0.2",
