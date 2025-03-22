@@ -57,24 +57,21 @@ export const ProgramPage = () => {
       return;
     }
 
-    // 放送前であれば、放送開始になるまで画面を更新し続ける
+    // 放送前であれば、放送開始になるまで待機
     if (!isBroadcastStarted) {
-      let timeout = setTimeout(function tick() {
+      const interval = setInterval(() => {
+        if (DateTime.now() < DateTime.fromISO(program.startAt)) return;
         forceUpdate();
-        timeout = setTimeout(tick, 250);
-      }, 250);
+        clearInterval(interval);
+      }, 1000)
       return () => {
-        clearTimeout(timeout);
+        clearInterval(interval);
       };
     }
 
     // 放送中に次の番組が始まったら、画面をそのままにしつつ、情報を次の番組にする
-    let timeout = setTimeout(function tick() {
-      if (DateTime.now() < DateTime.fromISO(program.endAt)) {
-        timeout = setTimeout(tick, 250);
-        return;
-      }
-
+    const interval = setInterval(() => {
+      if (DateTime.now() < DateTime.fromISO(program.endAt)) return;
       if (nextProgram?.id) {
         void navigate(`/programs/${nextProgram.id}`, {
           preventScrollReset: true,
@@ -85,9 +82,10 @@ export const ProgramPage = () => {
         isArchivedRef.current = true;
         forceUpdate();
       }
-    }, 250);
+      clearInterval(interval);
+    }, 1000)
     return () => {
-      clearTimeout(timeout);
+      clearInterval(interval);
     };
   }, [isBroadcastStarted, nextProgram?.id]);
 
@@ -166,7 +164,7 @@ export const ProgramPage = () => {
                   playerRef={playerRef}
                   playerType={PlayerType.VideoJS}
                   playlistUrl={`/streams/channel/${program.channel.id}/playlist.m3u8`}
-                  style={{ height: '100%', width: '100%' }}
+                  style={{ aspectRatio: "16 / 9", height: '100%', width: '100%' }}
                 />
                 <div style={{ bottom: 0, left: 0, position: 'absolute', right: 0 }}>
                   <PlayerController />
