@@ -7,10 +7,10 @@ export function useCurrentUnixtimeMs(): number {
   useEffect(() => {
     const interval = setInterval(() => {
       state.pages.timetable.refreshCurrentUnixtimeMs();
-    }, 250);
+    }, 1000);
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [state.pages.timetable.refreshCurrentUnixtimeMs]);
   return state.pages.timetable.currentUnixtimeMs;
 }

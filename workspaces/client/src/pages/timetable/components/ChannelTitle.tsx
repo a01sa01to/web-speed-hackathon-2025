@@ -16,11 +16,36 @@ export const ChannelTitle = ({ channelId }: Props) => {
 
   return (
     <div className="relative">
-      <div className={`border-x-solid h-[72px] w-auto border-x-[1px] border-x-[#212121] p-[14px]`} style={{ width }}>
-        <img alt={channel.name} className="object-contains size-full" draggable={false} src={channel.logoUrl.replace("/public/", "https://wsh2025-a01sa01to.pages.dev/")} />
+      <div
+        style={{
+          borderLeft: '1px solid #212121',
+          borderRight: '1px solid #212121',
+          height: '72px',
+          padding: '14px',
+          width,
+        }}
+      >
+        <img
+          alt={channel.name}
+          draggable={false}
+          height={60}
+          src={channel.logoUrl.replace(
+            '/public/',
+            'https://wsh2025-a01sa01to.pages.dev/'
+          )}
+          style={{ height: '100%', objectFit: 'contain', width: '100%' }}
+          width={280}
+        />
       </div>
 
-      <div className="absolute inset-y-0 right-[-4px] z-10 w-[8px]">
+      <div
+        style={{
+          inset: '0 auto auto -4px',
+          position: 'absolute',
+          width: '8px',
+          zIndex: 10,
+        }}
+      >
         <Gutter channelId={channelId} />
       </div>
     </div>

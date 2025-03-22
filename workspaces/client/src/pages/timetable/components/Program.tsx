@@ -1,9 +1,9 @@
-import { StandardSchemaV1 } from '@standard-schema/spec';
-import * as schema from '@wsh-2025/schema/src/api/schema';
+import type { StandardSchemaV1 } from '@standard-schema/spec';
+import type * as schema from '@wsh-2025/schema/src/api/schema';
 import { DateTime } from 'luxon';
-import { ReactElement, useEffect, useRef, useState } from 'react';
+import { type ReactElement, useEffect, useRef, useState } from 'react';
 import Ellipsis from 'react-ellipsis-component';
-import { ArrayValues } from 'type-fest';
+import type { ArrayValues } from 'type-fest';
 
 import { Hoverable } from '@wsh-2025/client/src/features/layout/components/Hoverable';
 import { ProgramDetailDialog } from '@wsh-2025/client/src/pages/timetable/components/ProgramDetailDialog';
@@ -51,30 +51,59 @@ export const Program = ({ height, program }: Props): ReactElement => {
     <>
       <Hoverable classNames={{ hovered: isArchived ? 'brightness-200' : 'brightness-125' }}>
         <button
-          className={`h-[${height}px] w-auto border-[1px] border-solid border-[#000000] bg-[${isBroadcasting ? '#FCF6E5' : '#212121'}] px-[12px] py-[8px] text-left opacity-${isArchived ? 50 : 100}`}
-          style={{ width }}
+          style={{
+            backgroundColor: isBroadcasting ? '#FCF6E5' : '#212121',
+            border: '1px solid #000000',
+            height: `${height}px`,
+            opacity: isArchived ? 0.5 : 1,
+            padding: '8px 12px',
+            textAlign: 'left',
+            width: `${width}px`,
+          }}
           type="button"
           onClick={onClick}
         >
-          <div className="flex size-full flex-col overflow-hidden">
-            <div ref={titleRef} className="mb-[8px] flex flex-row items-start justify-start">
+          <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', width: "100%" }}>
+            <div ref={titleRef} style={{ alignItems: 'start', display: 'flex', flexDirection: 'row', justifyContent: 'start', marginBottom: '8px' }}>
               <span
-                className={`mr-[8px] shrink-0 grow-0 text-[14px] font-bold text-[${isBroadcasting ? '#767676' : '#999999'}]`}
+                style={{
+                  color: isBroadcasting ? '#767676' : '#999999',
+                  flexGrow: 0,
+                  flexShrink: 0,
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginRight: '8px',
+                }}
               >
                 {DateTime.fromISO(program.startAt).toFormat('mm')}
               </span>
               <div
-                className={`grow-1 shrink-1 overflow-hidden text-[14px] font-bold text-[${isBroadcasting ? '#212121' : '#ffffff'}]`}
+                style={{
+                  color: isBroadcasting ? '#212121' : '#ffffff',
+                  flexGrow: 1,
+                  flexShrink: 1,
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  overflow: 'hidden',
+                }}
               >
                 <Ellipsis ellipsis reflowOnResize maxLine={3} text={program.title} visibleLine={3} />
               </div>
             </div>
-            <div className={`opacity-${shouldImageBeVisible ? 100 : 0} w-full`}>
+            <div style={{ opacity: shouldImageBeVisible ? 1 : 0, width: '100%' }}>
               <img
                 ref={imageRef}
                 alt=""
-                className="pointer-events-none w-full rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]"
-                decoding="async" loading="lazy" src={thumbUrl(program.thumbnailUrl, "md")}
+                decoding="async"
+                loading="lazy"
+                src={thumbUrl(program.thumbnailUrl, "md")}
+                style={{
+                  aspectRatio: "16 / 9",
+                  border: '2px solid #FFFFFF1F',
+                  borderRadius: '8px',
+                  pointerEvents: 'none',
+                  width: '100%',
+                }}
               />
             </div>
           </div>

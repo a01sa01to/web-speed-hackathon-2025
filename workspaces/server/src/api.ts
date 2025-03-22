@@ -339,6 +339,24 @@ export async function registerApi(app: FastifyInstance): Promise<void> {
         orderBy(program, { asc }) {
           return asc(program.startAt);
         },
+        columns: {
+          id: true,
+          startAt: true,
+          endAt: true,
+          title: true,
+          description: true,
+          thumbnailUrl: true,
+          channelId: true,
+        },
+        with: {
+          episode: {
+            columns: {
+              title: true,
+              description: true,
+              thumbnailUrl: true,
+            }
+          }
+        },
         where(program, { between, sql }) {
           // 競技のため、時刻のみで比較する
           return between(

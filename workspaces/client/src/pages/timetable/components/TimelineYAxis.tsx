@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 import { HEIGHT_ONE_HOUR } from '@wsh-2025/client/src/features/timetable/constants/grid_size';
 
@@ -6,13 +6,33 @@ export const TimelineYAxis = (): ReactElement => {
   const hours = Array.from({ length: 24 }, (_, hour) => {
     return (
       <div
+        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
         key={hour}
-        className={`h-[${HEIGHT_ONE_HOUR}px] border-y-solid flex shrink-0 grow-0 items-center justify-center border-y-[1px] border-y-[#212121] bg-[#000000]`}
+        style={{
+          alignItems: 'center',
+          backgroundColor: '#000000',
+          borderBottom: '1px solid #212121',
+          borderTop: '1px solid #212121',
+          display: 'flex',
+          flexGrow: 0,
+          flexShrink: 0,
+          height: `${HEIGHT_ONE_HOUR}px`,
+          justifyContent: 'center',
+        }}
       >
-        <span className="shrink-0 grow-0 text-[16px] font-bold text-[#ffffff]">{hour}</span>
+        <span
+          style={{
+            color: '#ffffff',
+            flexGrow: 0,
+            flexShrink: 0,
+            fontSize: '16px',
+            fontWeight: 'bold',
+          }}
+        >
+          {hour}
+        </span>
       </div>
     );
   });
-
-  return <div className="flex w-[24px] flex-col">{hours}</div>;
+  return <div style={{ display: "flex", flexDirection: "column", width: "24px" }}>{hours}</div>;
 };

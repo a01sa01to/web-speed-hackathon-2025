@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import invariant from 'tiny-invariant';
 
-import { createStore } from '@wsh-2025/client/src/app/createStore';
+import type { createStore } from '@wsh-2025/client/src/app/createStore';
 import { useTimetable } from '@wsh-2025/client/src/features/timetable/hooks/useTimetable';
 import { ChannelTitle } from '@wsh-2025/client/src/pages/timetable/components/ChannelTitle';
 import { NewTimetableFeatureDialog } from '@wsh-2025/client/src/pages/timetable/components/NewTimetableFeatureDialog';
@@ -30,24 +30,57 @@ export const TimetablePage = () => {
     <>
       <title>番組表 - AremaTV</title>
 
-      <div className="relative grid size-full overflow-x-auto overflow-y-auto [grid-template-areas:'channel_channel''hours_content']">
-        <div className="sticky top-0 z-20 flex w-fit flex-row bg-[#000000] pl-[24px] [grid-area:channel]">
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateAreas: `'channel channel' 'hours content'`,
+          height: '100%',
+          overflowX: 'auto',
+          overflowY: 'auto',
+          position: 'relative',
+          width: '100%',
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: '#000000',
+            display: 'flex',
+            flexDirection: 'row',
+            gridArea: 'channel',
+            paddingLeft: '24px',
+            position: 'sticky',
+            top: 0,
+            width: "fit-content",
+            zIndex: 20,
+          }}
+        >
           {channelIds.map((channelId) => (
-            <div key={channelId} className="shrink-0 grow-0">
+            <div key={channelId} style={{ flexGrow: 0, flexShrink: 0 }}>
               <ChannelTitle channelId={channelId} />
             </div>
           ))}
         </div>
 
-        <div className="sticky inset-y-0 left-0 z-10 shrink-0 grow-0 bg-[#000000] [grid-area:hours]">
+        <div
+          style={{
+            backgroundColor: '#000000',
+            bottom: 0,
+            flexGrow: 0,
+            flexShrink: 0,
+            gridArea: 'hours',
+            position: 'sticky',
+            top: 0,
+            zIndex: 10,
+          }}
+        >
           <TimelineYAxis />
         </div>
-        <div className="flex flex-row [grid-area:content]">
+        <div style={{ display: 'flex', flexDirection: 'row', gridArea: 'content' }}>
           {programLists.map((programList, index) => {
             const channelId = channelIds[index];
             invariant(channelId);
             return (
-              <div key={channelIds[index]} className="shrink-0 grow-0">
+              <div key={channelIds[index]} style={{ flexGrow: 0, flexShrink: 0 }}>
                 <ProgramList channelId={channelId} programList={programList} />
               </div>
             );
