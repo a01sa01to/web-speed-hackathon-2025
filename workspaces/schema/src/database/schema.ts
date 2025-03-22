@@ -74,7 +74,7 @@ export const series = table(
     thumbnailUrl: t.text().notNull(),
     title: t.text().notNull(),
   },
-  () => [],
+  (tb) => [t.index("series_id_idx").on(tb.id)],
 );
 export const seriesRelation = relations(series, ({ many }) => ({
   episodes: many(episode),
@@ -98,7 +98,7 @@ export const episode = table(
       .references(() => stream.id),
     premium: t.integer({ mode: 'boolean' }).notNull(),
   },
-  () => [],
+  (tb) => [t.index("episode_id_idx").on(tb.id), t.index("episode_order_idx").on(tb.order)],
 );
 export const episodeRelation = relations(episode, ({ one }) => ({
   series: one(series, {
@@ -118,7 +118,9 @@ export const channel = table(
     name: t.text().notNull(),
     logoUrl: t.text().notNull(),
   },
-  () => [],
+  (tb) => [
+    t.index("channel_id_idx").on(tb.id),
+  ]
 );
 
 export const program = table(
@@ -139,7 +141,7 @@ export const program = table(
       .notNull()
       .references(() => episode.id),
   },
-  () => [],
+  (tb) => [t.index("program_startAt_idx").on(tb.startAt)],
 );
 export const programRelation = relations(program, ({ one }) => ({
   channel: one(channel, {
