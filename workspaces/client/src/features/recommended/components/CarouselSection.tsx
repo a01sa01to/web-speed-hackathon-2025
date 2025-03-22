@@ -30,7 +30,7 @@ export const CarouselSection = ({ module }: Props) => {
             // display: "grid",
             display: "flex",
             flexDirection: "row",
-            gap: "12px",
+            colGap: "12px",
             // gridTemplateColumns: "repeat(auto-fill, minmax(276px, 1fr))",
             marginLeft: "-24px",
             marginRight: "-24px",

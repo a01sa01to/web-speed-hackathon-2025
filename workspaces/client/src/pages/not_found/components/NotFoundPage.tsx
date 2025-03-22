@@ -1,4 +1,4 @@
-import { createStore } from '@wsh-2025/client/src/app/createStore';
+import type { createStore } from '@wsh-2025/client/src/app/createStore';
 import { RecommendedSection } from '@wsh-2025/client/src/features/recommended/components/RecommendedSection';
 import { useRecommended } from '@wsh-2025/client/src/features/recommended/hooks/useRecommended';
 
@@ -17,11 +17,28 @@ export const NotFoundPage = () => {
     <>
       <title>見つかりません - AremaTV</title>
 
-      <div className="w-full px-[32px] py-[48px]">
-        <section className="mb-[32px] flex w-full flex-col items-center justify-center gap-y-[20px]">
-          <h1 className="text-[32px] font-bold text-[#ffffff]">ページが見つかりませんでした</h1>
+      <div style={{ padding: '48px 32px', width: '100%' }}>
+        <section
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            marginBottom: '32px',
+            rowGap: '20px',
+            width: '100%',
+          }}
+        >
+          <h1 style={{ color: '#ffffff', fontSize: '32px', fontWeight: 'bold' }}>
+            ページが見つかりませんでした
+          </h1>
           <p>あなたが見ようとしたページは、残念ながら見つけられませんでした。</p>
-          <img alt="" className="h-auto w-[640px]" src="/public/animations/001.gif" />
+          <img
+            alt=""
+            height="360"
+            src="/public/animations/001.gif"
+            width="640"
+          />
         </section>
         <section>{module != null ? <RecommendedSection module={module} /> : null}</section>
       </div>
