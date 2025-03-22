@@ -4,6 +4,15 @@ settings:
   autoInstallPeers: false
   excludeLinksFromLockfile: false
 
+overrides:
+  es-abstract: ~1.23.9
+  m3u8-parser>@babel/runtime: '-'
+
+patchedDependencies:
+  shaka-player:
+    hash: ztcamgtqc3a62la4l6p3d6w4ae
+    path: patches/shaka-player.patch
+
 importers:
 
   .:
@@ -3911,7 +3920,6 @@ packages:
 
   libsql@0.4.7:
     resolution: {integrity: sha512-T9eIRCs6b0J1SHKYIvD8+KCJMcWZ900iZyxdnSCdqxN12Z1ijzT+jY5nrk72Jw4B0HGzms2NgpryArlJqvc3Lw==}
-    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   lie@3.3.0:
