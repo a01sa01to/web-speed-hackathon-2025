@@ -1,5 +1,3 @@
-import { IconifyJSON } from '@iconify/types';
-import presetIcons from '@unocss/preset-icons/browser';
 import presetWind3 from '@unocss/preset-wind3';
 import initUnocssRuntime, { defineConfig } from '@unocss/runtime';
 
@@ -47,18 +45,6 @@ async function init() {
       ],
       presets: [
         presetWind3(),
-        presetIcons({
-          collections: {
-            bi: () => import('./bi.json').then((m): IconifyJSON => m.default as IconifyJSON),
-            'fa-solid': () =>
-              import('./fa-solid.json').then((m): IconifyJSON => m.default as IconifyJSON),
-            fluent: () => import('./fluent.json').then((m): IconifyJSON => m.default as IconifyJSON),
-            'line-md': () =>
-              import('./line-md.json').then((m): IconifyJSON => m.default as IconifyJSON),
-            'material-symbols': () =>
-              import('./material-symbols.json').then((m): IconifyJSON => m.default as IconifyJSON),
-          },
-        }),
       ],
     }),
   });
