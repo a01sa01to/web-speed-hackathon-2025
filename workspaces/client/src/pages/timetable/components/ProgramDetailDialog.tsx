@@ -34,7 +34,7 @@ export const ProgramDetailDialog = ({ isOpen, program }: Props): ReactElement =>
         <img
           alt=""
           className="mb-[24px] w-full rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]"
-          src={thumbUrl(program.thumbnailUrl, "md")}
+          decoding="async" loading="lazy" src={thumbUrl(program.thumbnailUrl, "md")}
         />
 
         {episode != null ? (
@@ -48,7 +48,7 @@ export const ProgramDetailDialog = ({ isOpen, program }: Props): ReactElement =>
             <img
               alt=""
               className="mb-[24px] w-full rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]"
-              src={thumbUrl(episode.thumbnailUrl, "md")}
+              decoding="async" loading="lazy" src={thumbUrl(episode.thumbnailUrl, "md")}
             />
           </>
         ) : null}

@@ -48,7 +48,7 @@ export const EpisodeItem = ({ episode }: Props) => {
                       content: '';
                     }`}
                   </style>
-                  <img alt="" src={thumbUrl(episode.thumbnailUrl, "md")} style={{ height: 'auto', width: '100%' }} />
+                  <img alt="" decoding="async" loading="lazy" src={thumbUrl(episode.thumbnailUrl, "md")} style={{ height: 'auto', width: '100%' }} />
                   <span
                     className="i-material-symbols:play-arrow-rounded"
                     style={{
