@@ -64,7 +64,7 @@ export const Layout = ({ children }: Props) => {
           )}
         >
           <Link className="block flex w-[188px] items-center justify-center px-[8px]" to="/">
-            <img alt="AREMA" className="object-contain" height={36} src="/public/arema.svg" width={98} />
+            <img alt="AREMA" className="object-contain" height={36} src="https://wsh2025-a01sa01to.pages.dev/arema.svg" width={98} />
           </Link>
         </header>
 
