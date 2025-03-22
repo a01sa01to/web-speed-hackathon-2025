@@ -97,17 +97,65 @@ export const ProgramPage = () => {
     <>
       <title>{`${program.title} - ${program.episode.series.title} - AremaTV`}</title>
 
-      <div className="px-[24px] py-[48px]">
+      <div style={{ padding: '48px 24px' }}>
         <Flipped stagger flipId={`program-${program.id}`}>
-          <div className="m-auto mb-[16px] max-w-[1280px] outline outline-[1px] outline-[#212121]">
+          <div
+            style={{
+              margin: 'auto',
+              marginBottom: '16px',
+              maxWidth: '1280px',
+              outline: '1px solid #212121',
+            }}
+          >
             {isArchivedRef.current ? (
-              <div className="relative size-full">
-                <img alt="" className="h-auto w-full" decoding="sync" loading="eager" src={thumbUrl(program.thumbnailUrl, "lg")} />
+              <div style={{ height: '100%', position: 'relative', width: '100%' }}>
+                <img
+                  alt=""
+                  decoding="sync"
+                  loading="eager"
+                  src={thumbUrl(program.thumbnailUrl, 'lg')}
+                  style={{ aspectRatio: "16 / 9", height: 'auto', width: '100%' }}
+                />
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#00000077] p-[24px]">
-                  <p className="mb-[32px] text-[24px] font-bold text-[#ffffff]">この番組は放送が終了しました</p>
+                <div
+                  style={{
+                    alignItems: 'center',
+                    backgroundColor: '#00000077',
+                    bottom: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    left: 0,
+                    padding: '24px',
+                    position: 'absolute',
+                    right: 0,
+                    top: 0,
+                  }}
+                >
+                  <p
+                    style={{
+                      color: '#ffffff',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      marginBottom: '32px',
+                    }}
+                  >
+                    この番組は放送が終了しました
+                  </p>
                   <Link
-                    className="block flex w-[160px] flex-row items-center justify-center rounded-[4px] bg-[#1c43d1] p-[12px] text-[14px] font-bold text-[#ffffff] disabled:opacity-50"
+                    style={{
+                      alignItems: 'center',
+                      backgroundColor: '#1c43d1',
+                      borderRadius: '4px',
+                      color: '#ffffff',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      fontSize: '14px',
+                      fontWeight: 'bold',
+                      justifyContent: 'center',
+                      padding: '12px',
+                      width: '160px',
+                    }}
                     to={`/episodes/${program.episode.id}`}
                   >
                     見逃し視聴する
@@ -115,24 +163,50 @@ export const ProgramPage = () => {
                 </div>
               </div>
             ) : isBroadcastStarted ? (
-              <div className="relative size-full">
+              <div style={{ height: '100%', position: 'relative', width: '100%' }}>
                 <Player
-                  className="size-full"
                   playerRef={playerRef}
                   playerType={PlayerType.VideoJS}
                   playlistUrl={`/streams/channel/${program.channel.id}/playlist.m3u8`}
+                  style={{ height: '100%', width: '100%' }}
                 />
-                <div className="absolute inset-x-0 bottom-0">
+                <div style={{ bottom: 0, left: 0, position: 'absolute', right: 0 }}>
                   <PlayerController />
                 </div>
               </div>
             ) : (
-              <div className="relative size-full">
-                <img alt="" className="h-auto w-full" decoding="sync" loading="eager" src={
-                  thumbUrl(program.thumbnailUrl, "lg")} />
+              <div style={{ height: '100%', position: 'relative', width: '100%' }}>
+                <img
+                  alt=""
+                  decoding="sync"
+                  loading="eager"
+                  src={thumbUrl(program.thumbnailUrl, 'lg')}
+                  style={{ height: 'auto', width: '100%' }}
+                />
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#00000077] p-[24px]">
-                  <p className="mb-[32px] text-[24px] font-bold text-[#ffffff]">
+                <div
+                  style={{
+                    alignItems: 'center',
+                    backgroundColor: '#00000077',
+                    bottom: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    left: 0,
+                    padding: '24px',
+                    position: 'absolute',
+                    right: 0,
+                    top: 0,
+                  }}
+                >
+                  <p
+                    style={{
+                      color: '#ffffff',
+                      fontSize: '24px',
+                      fontWeight: 'bold',
+                      marginBottom: '32px',
+                    }}
+                  >
                     この番組は {DateTime.fromISO(program.startAt).toFormat('L月d日 H:mm')} に放送予定です
                   </p>
                 </div>
@@ -141,31 +215,59 @@ export const ProgramPage = () => {
           </div>
         </Flipped>
 
-        <div className="mb-[24px]">
-          <div className="text-[16px] text-[#ffffff]">
+        <div style={{ marginBottom: '24px' }}>
+          <div style={{ color: '#ffffff', fontSize: '16px' }}>
             <Ellipsis ellipsis reflowOnResize maxLine={1} text={program.episode.series.title} visibleLine={1} />
           </div>
-          <h1 className="mt-[8px] text-[22px] font-bold text-[#ffffff]">
+          <h1
+            style={{
+              color: '#ffffff',
+              fontSize: '22px',
+              fontWeight: 'bold',
+              marginTop: '8px',
+            }}
+          >
             <Ellipsis ellipsis reflowOnResize maxLine={2} text={program.title} visibleLine={2} />
           </h1>
-          <div className="mt-[8px] text-[16px] text-[#999999]">
+          <div
+            style={{
+              color: '#999999',
+              fontSize: '16px',
+              marginTop: '8px',
+            }}
+          >
             {DateTime.fromISO(program.startAt).toFormat('L月d日 H:mm')}
             {' 〜 '}
             {DateTime.fromISO(program.endAt).toFormat('L月d日 H:mm')}
           </div>
-          <div className="mt-[16px] text-[16px] text-[#999999]">
+          <div
+            style={{
+              color: '#999999',
+              fontSize: '16px',
+              marginTop: '16px',
+            }}
+          >
             <Ellipsis ellipsis reflowOnResize maxLine={3} text={program.description} visibleLine={3} />
           </div>
         </div>
 
         {modules[0] != null ? (
-          <div className="mt-[24px]">
+          <div style={{ marginTop: '24px' }}>
             <RecommendedSection module={modules[0]} />
           </div>
         ) : null}
 
-        <div className="mt-[24px]">
-          <h2 className="mb-[12px] text-[22px] font-bold text-[#ffffff]">関連するエピソード</h2>
+        <div style={{ marginTop: '24px' }}>
+          <h2
+            style={{
+              color: '#ffffff',
+              fontSize: '22px',
+              fontWeight: 'bold',
+              marginBottom: '12px',
+            }}
+          >
+            関連するエピソード
+          </h2>
           <SeriesEpisodeList episodes={program.episode.series.episodes} selectedEpisodeId={program.episode.id} />
         </div>
       </div>
