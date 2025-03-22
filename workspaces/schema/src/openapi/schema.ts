@@ -204,7 +204,9 @@ export const getProgramByIdResponse = program.extend({
 // GET /recommended/:referenceId
 export const getRecommendedModulesRequestParams = z.object({
   referenceId: z.string(),
-  limit: z.number().optional(),
+});
+export const getRecommendedModulesRequestQuery = z.object({
+  limit: z.string().regex(/^\d+$/).optional(),
 });
 export const getRecommendedModulesResponse = z.array(
   recommendedModule.pick({

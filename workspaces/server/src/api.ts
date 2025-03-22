@@ -495,6 +495,7 @@ export async function registerApi(app: FastifyInstance): Promise<void> {
     schema: {
       tags: ['レコメンド'],
       params: schema.getRecommendedModulesRequestParams,
+      querystring: schema.getRecommendedModulesRequestQuery,
       response: {
         200: {
           content: {
@@ -515,7 +516,7 @@ export async function registerApi(app: FastifyInstance): Promise<void> {
         where(module, { eq }) {
           return eq(module.referenceId, req.params.referenceId);
         },
-        limit: req.params.limit,
+        limit: req.query.limit ? Number.parseInt(req.query.limit) : undefined,
         columns: {
           id: true,
           title: true,

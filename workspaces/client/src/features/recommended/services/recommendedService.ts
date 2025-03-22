@@ -29,7 +29,8 @@ export const recommendedService: RecommendedService = {
     }
 
     const data = await $fetch('/recommended/:referenceId', {
-      params: { limit, referenceId },
+      params: { referenceId },
+      query: { limit }
     });
     return data;
   },
