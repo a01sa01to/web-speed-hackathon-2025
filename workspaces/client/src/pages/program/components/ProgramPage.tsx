@@ -30,7 +30,7 @@ export const prefetch = async (store: ReturnType<typeof createStore>, { programI
   const timetable = await store.getState().features.timetable.fetchTimetable({ since, until });
   const modules = await store
     .getState()
-    .features.recommended.fetchRecommendedModulesByReferenceId({ referenceId: programId });
+    .features.recommended.fetchRecommendedModulesByReferenceId({ limit: 1, referenceId: programId });
   return { channels, modules, program, timetable };
 };
 
@@ -46,7 +46,7 @@ export const ProgramPage = () => {
     return DateTime.fromISO(program.endAt).equals(DateTime.fromISO(p.startAt));
   });
 
-  const modules = useRecommended({ limit: 1, referenceId: programId });
+  const modules = useRecommended({ referenceId: programId });
 
   const playerRef = usePlayerRef();
 
