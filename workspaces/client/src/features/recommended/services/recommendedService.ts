@@ -25,7 +25,7 @@ interface RecommendedService {
 export const recommendedService: RecommendedService = {
   async fetchRecommendedModulesByReferenceId({ limit, referenceId }) {
     if (referenceId === "entrance" || referenceId === "error") {
-      return await fetch(`/public/api/recommendation/${referenceId}.json`).then((res) => res.json()) as Promise<StandardSchemaV1.InferOutput<typeof schema.getRecommendedModulesResponse>>
+      return await fetch(`https://wsh2025-a01sa01to.pages.dev/api/recommendation/${referenceId}.json`).then((res) => res.json()) as Promise<StandardSchemaV1.InferOutput<typeof schema.getRecommendedModulesResponse>>
     }
 
     const data = await $fetch('/recommended/:referenceId', {
