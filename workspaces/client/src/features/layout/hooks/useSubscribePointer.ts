@@ -15,12 +15,11 @@ export function useSubscribePointer(): void {
     };
     window.addEventListener('pointermove', handlePointerMove, { signal: abortController.signal });
 
-    let immediate = setImmediate(function tick() {
+    const interval = setInterval(() => {
       s.features.layout.updatePointer({ ...current });
-      immediate = setImmediate(tick);
-    });
+    }, 20);
     abortController.signal.addEventListener('abort', () => {
-      clearImmediate(immediate);
+      clearInterval(interval);
     });
 
     return () => {
