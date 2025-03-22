@@ -3,6 +3,7 @@ import { Flipped } from 'react-flip-toolkit';
 import { NavLink } from 'react-router';
 
 import { Hoverable } from '@wsh-2025/client/src/features/layout/components/Hoverable';
+import { thumbUrl } from '@wsh-2025/client/src/utils/thumb';
 
 interface Props {
   series: {
@@ -30,7 +31,7 @@ export const SeriesItem = ({ series }: Props) => {
                 }}
               >
                 <Flipped stagger flipId={isTransitioning ? `series-${series.id}` : 0}>
-                  <img alt="" src={series.thumbnailUrl.split('?')[0] ?? ""} style={{ height: 'auto', width: '100%' }} />
+                  <img alt="" src={thumbUrl(series.thumbnailUrl, "md")} style={{ height: 'auto', width: '100%' }} />
                 </Flipped>
               </div>
               <div style={{ padding: '8px' }}>

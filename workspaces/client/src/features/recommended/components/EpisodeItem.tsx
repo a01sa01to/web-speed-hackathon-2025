@@ -4,6 +4,7 @@ import { Flipped } from 'react-flip-toolkit';
 import { NavLink } from 'react-router';
 
 import { Hoverable } from '@wsh-2025/client/src/features/layout/components/Hoverable';
+import { thumbUrl } from '@wsh-2025/client/src/utils/thumb';
 
 interface Props {
   episode: {
@@ -47,7 +48,7 @@ export const EpisodeItem = ({ episode }: Props) => {
                       content: '';
                     }`}
                   </style>
-                  <img alt="" src={episode.thumbnailUrl.split('?')[0] ?? ""} style={{ height: 'auto', width: '100%' }} />
+                  <img alt="" src={thumbUrl(episode.thumbnailUrl, "md")} style={{ height: 'auto', width: '100%' }} />
                   <span
                     className="i-material-symbols:play-arrow-rounded"
                     style={{

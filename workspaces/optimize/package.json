@@ -1,0 +1,6 @@
+{
+  "name": "optimize",
+  "devDependencies": {
+    "sharp": "0.33.5"
+  }
+}
