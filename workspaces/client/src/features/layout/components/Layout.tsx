@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-import { ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { Flipper } from 'react-flip-toolkit';
 import { Link, useLocation, useNavigation } from 'react-router';
 
@@ -54,61 +53,179 @@ export const Layout = ({ children }: Props) => {
 
   return (
     <>
-      <div className="grid h-auto min-h-[100vh] w-full grid-cols-[188px_minmax(0,1fr)] grid-rows-[80px_calc(100vh-80px)_minmax(0,1fr)] flex-col [grid-template-areas:'a1_b1''a2_b2''a3_b3']">
+      <div
+        style={{
+          display: 'grid',
+          flexDirection: 'column',
+          gridTemplateAreas: "'a1 b1' 'a2 b2' 'a3 b3'",
+          gridTemplateColumns: '188px minmax(0,1fr)',
+          gridTemplateRows: '80px calc(100vh - 80px) minmax(0,1fr)',
+          height: 'auto',
+          minHeight: '100vh',
+          width: '100%',
+        }}
+      >
         <header
-          className={classNames(
-            'sticky top-[0px] z-10 order-1 flex h-[80px] w-full flex-row [grid-area:a1/a1/b1/b1]',
-            !isLoading && shouldHeaderBeTransparent
-              ? 'bg-gradient-to-b from-[#171717] to-transparent'
-              : 'bg-gradient-to-b from-[#171717] to-[#171717]',
-          )}
+          style={{
+            background: !isLoading && shouldHeaderBeTransparent
+              ? 'linear-gradient(to bottom, #171717, transparent)'
+              : 'linear-gradient(to bottom, #171717, #171717)',
+            display: 'flex',
+            flexDirection: 'row',
+            gridArea: 'a1 / a1 / b1 / b1',
+            height: '80px',
+            order: 1,
+            position: 'sticky',
+            top: '0px',
+            width: '100%',
+            zIndex: 10,
+          }}
         >
-          <Link className="block flex w-[188px] items-center justify-center px-[8px]" to="/">
-            <img alt="AREMA" className="object-contain" height={36} src="https://wsh2025-a01sa01to.pages.dev/arema.svg" width={98} />
+          <Link
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              paddingLeft: '8px',
+              paddingRight: '8px',
+              width: '188px',
+            }}
+            to="/"
+          >
+            <img
+              alt="AREMA"
+              height={36}
+              src="https://wsh2025-a01sa01to.pages.dev/arema.svg"
+              style={{ objectFit: 'contain' }}
+              width={98}
+            />
           </Link>
         </header>
 
-        <aside className="sticky top-[0px] flex h-[100vh] flex-col items-center bg-[#171717] pt-[80px] [grid-area:a1/a1/a2/a2]">
+        <aside
+          style={{
+            alignItems: 'center',
+            backgroundColor: '#171717',
+            display: 'flex',
+            flexDirection: 'column',
+            gridArea: 'a1 / a1 / a2 / a2',
+            height: '100vh',
+            paddingTop: '80px',
+            position: 'sticky',
+            top: '0px',
+          }}
+        >
           <nav>
             <button
-              className="block flex h-[56px] w-[188px] items-center justify-center bg-transparent pb-[8px] pl-[20px] pr-[8px] pt-[8px]"
+              style={{
+                alignItems: 'center',
+                backgroundColor: 'transparent',
+                display: 'flex',
+                height: '56px',
+                justifyContent: 'center',
+                padding: '8px 8px 8px 20px',
+                width: '188px',
+              }}
               type="button"
               onClick={isSignedIn ? authActions.openSignOutDialog : authActions.openSignInDialog}
             >
               <div
-                className={`i-fa-solid:${isSignedIn ? 'sign-out-alt' : 'user'} m-[4px] size-[20px] shrink-0 grow-0`}
+                className={`i-fa-solid:${isSignedIn ? 'sign-out-alt' : 'user'}`}
+                style={{ flexGrow: 0, flexShrink: 0, fontSize: '20px', margin: '4px' }}
               />
-              <span className="grow-1 shrink-1 ml-[16px] text-left text-[14px] font-bold">
+              <span
+                style={{
+                  flexGrow: 1,
+                  flexShrink: 1,
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginLeft: '16px',
+                  textAlign: 'left',
+                }}
+              >
                 {isSignedIn ? 'ログアウト' : 'ログイン'}
               </span>
             </button>
 
             <Link
-              className="block flex h-[56px] w-[188px] items-center justify-center pb-[8px] pl-[20px] pr-[8px] pt-[8px]"
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                height: '56px',
+                justifyContent: 'center',
+                padding: '8px 8px 8px 20px',
+                width: '188px',
+              }}
               to="/"
             >
-              <div className="i-bi:house-fill m-[4px] size-[20px] shrink-0 grow-0" />
-              <span className="grow-1 shrink-1 ml-[16px] text-left text-[14px] font-bold">ホーム</span>
+              <div
+                className="i-bi:house-fill"
+                style={{ flexGrow: 0, flexShrink: 0, fontSize: '20px', margin: '4px' }}
+              />
+              <span
+                style={{
+                  flexGrow: 1,
+                  flexShrink: 1,
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginLeft: '16px',
+                  textAlign: 'left',
+                }}
+              >
+                ホーム
+              </span>
             </Link>
 
             <Link
-              className="block flex h-[56px] w-[188px] items-center justify-center pb-[8px] pl-[20px] pr-[8px] pt-[8px]"
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                height: '56px',
+                justifyContent: 'center',
+                padding: '8px 8px 8px 20px',
+                width: '188px',
+              }}
               to="/timetable"
             >
-              <div className="i-fa-solid:calendar m-[4px] size-[20px] shrink-0 grow-0" />
-              <span className="grow-1 shrink-1 ml-[16px] text-left text-[14px] font-bold">番組表</span>
+              <div
+                className="i-fa-solid:calendar"
+                style={{ flexGrow: 0, flexShrink: 0, fontSize: '20px', margin: '4px' }}
+              />
+              <span
+                style={{
+                  flexGrow: 1,
+                  flexShrink: 1,
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginLeft: '16px',
+                  textAlign: 'left',
+                }}
+              >
+                番組表
+              </span>
             </Link>
           </nav>
         </aside>
 
-        <main className={isTimetablePage ? '[grid-area:b2]' : '[grid-area:b2/b2/b3/b3]'}>
+        <main
+          style={{
+            gridArea: isTimetablePage ? 'b2' : 'b2 / b2 / b3 / b3',
+          }}
+        >
           <Flipper className="size-full" flipKey={location.key} spring="noWobble">
             {children}
           </Flipper>
         </main>
 
         {isLoading ? (
-          <div className="sticky top-[80px] z-50 [grid-area:b2]">
+          <div
+            style={{
+              gridArea: 'b2',
+              position: 'sticky',
+              top: '80px',
+              zIndex: 50,
+            }}
+          >
             <Loading />
           </div>
         ) : null}
