@@ -36,7 +36,7 @@ export const NotFoundPage = () => {
           <img
             alt=""
             height="360"
-            src="/public/animations/001.gif"
+            src="https://wsh2025-a01sa01to.pages.dev/animations/001.gif"
             width="640"
           />
         </section>
