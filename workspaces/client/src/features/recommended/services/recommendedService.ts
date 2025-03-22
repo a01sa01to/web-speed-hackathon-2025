@@ -1,5 +1,5 @@
 import { createFetch, createSchema } from '@better-fetch/fetch';
-import { StandardSchemaV1 } from '@standard-schema/spec';
+import type { StandardSchemaV1 } from '@standard-schema/spec';
 import * as schema from '@wsh-2025/schema/src/api/schema';
 
 import { schedulePlugin } from '@wsh-2025/client/src/features/requests/schedulePlugin';
@@ -23,6 +23,10 @@ interface RecommendedService {
 
 export const recommendedService: RecommendedService = {
   async fetchRecommendedModulesByReferenceId({ referenceId }) {
+    if (referenceId === "entrance") {
+      return await fetch("/public/api/recommendation/entrance.json").then((res) => res.json()) as Promise<StandardSchemaV1.InferOutput<typeof schema.getRecommendedModulesResponse>>
+    }
+
     const data = await $fetch('/recommended/:referenceId', {
       params: { referenceId },
     });
