@@ -1,9 +1,9 @@
-import { Ref, useEffect, useRef } from 'react';
+import { type CSSProperties, type Ref, useEffect, useRef } from 'react';
 import invariant from 'tiny-invariant';
 import { assignRef } from 'use-callback-ref';
 
-import { PlayerType } from '@wsh-2025/client/src/features/player/constants/player_type';
-import { PlayerWrapper } from '@wsh-2025/client/src/features/player/interfaces/player_wrapper';
+import type { PlayerType } from '@wsh-2025/client/src/features/player/constants/player_type';
+import type { PlayerWrapper } from '@wsh-2025/client/src/features/player/interfaces/player_wrapper';
 
 interface Props {
   className?: string;
@@ -11,9 +11,10 @@ interface Props {
   playerRef: Ref<PlayerWrapper | null>;
   playerType: PlayerType;
   playlistUrl: string;
+  style?: CSSProperties;
 }
 
-export const Player = ({ className, loop, playerRef, playerType, playlistUrl }: Props) => {
+export const Player = ({ className, loop, playerRef, playerType, playlistUrl, style }: Props) => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,12 +45,27 @@ export const Player = ({ className, loop, playerRef, playerType, playlistUrl }: 
   }, [playerType, playlistUrl, loop]);
 
   return (
-    <div className={className}>
-      <div className="relative size-full">
-        <div ref={mountRef} className="size-full" />
+    <div className={className} style={style}>
+      <div style={{ height: '100%', position: 'relative', width: '100%' }}>
+        <div ref={mountRef} style={{ height: '100%', width: '100%' }} />
 
-        <div className="absolute inset-0 z-[-10] grid place-content-center">
-          <div className="i-line-md:loading-twotone-loop size-[48px] text-[#ffffff]" />
+        <div
+          style={{
+            display: 'grid',
+            inset: '0',
+            placeContent: 'center',
+            position: 'absolute',
+            zIndex: -10,
+          }}
+        >
+          <div
+            className="i-line-md:loading-twotone-loop"
+            style={{
+              color: '#ffffff',
+              height: '48px',
+              width: '48px',
+            }}
+          />
         </div>
       </div>
     </div>

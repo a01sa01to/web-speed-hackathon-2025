@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import { Flipped } from 'react-flip-toolkit';
 import { NavLink } from 'react-router';
@@ -17,28 +18,74 @@ interface Props {
 }
 
 export const EpisodeItem = ({ episode }: Props) => {
+  const uid = useId();
+
   return (
     <Hoverable classNames={{ hovered: 'opacity-75' }}>
-      <NavLink viewTransition className="block w-full overflow-hidden" to={`/episodes/${episode.id}`}>
+      <NavLink viewTransition style={{ display: 'block', overflow: 'hidden', width: '100%' }} to={`/episodes/${episode.id}`}>
         {({ isTransitioning }) => {
           return (
             <>
               <Flipped stagger flipId={isTransitioning ? `episode-${episode.id}` : 0}>
-                <div className="relative overflow-hidden rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F] before:absolute before:inset-x-0 before:bottom-0 before:block before:h-[64px] before:bg-gradient-to-t before:from-[#212121] before:to-transparent before:content-['']">
-                  <img alt="" className="h-auto w-full" src={episode.thumbnailUrl.split('?')[0] ?? ""} />
-                  <span className="i-material-symbols:play-arrow-rounded absolute bottom-[4px] left-[4px] m-[4px] block size-[20px] text-[#ffffff]" />
+                <div
+                  className={uid}
+                  style={{
+                    border: '2px solid rgba(255, 255, 255, 0.12)',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    position: 'relative',
+                  }}
+                >
+                  <style>
+                    {`.${uid}::before {
+                      position: absolute;
+                      inset-x: 0;
+                      bottom: 0;
+                      display: block;
+                      height: 64px;
+                      background: linear-gradient(to top, #212121, transparent);
+                      content: '';
+                    }`}
+                  </style>
+                  <img alt="" src={episode.thumbnailUrl.split('?')[0] ?? ""} style={{ height: 'auto', width: '100%' }} />
+                  <span
+                    className="i-material-symbols:play-arrow-rounded"
+                    style={{
+                      bottom: '4px',
+                      color: '#ffffff',
+                      display: 'block',
+                      fontSize: '20px',
+                      left: '4px',
+                      margin: '4px',
+                      position: 'absolute',
+                    }}
+                  />
                   {episode.premium ? (
-                    <span className="absolute bottom-[8px] right-[4px] inline-flex items-center justify-center rounded-[4px] bg-[#1c43d1] p-[4px] text-[10px] text-[#ffffff]">
+                    <span
+                      style={{
+                        alignItems: 'center',
+                        backgroundColor: '#1c43d1',
+                        borderRadius: '4px',
+                        bottom: '8px',
+                        color: '#ffffff',
+                        display: 'inline-flex',
+                        fontSize: '10px',
+                        justifyContent: 'center',
+                        padding: '4px',
+                        position: 'absolute',
+                        right: '4px',
+                      }}
+                    >
                       プレミアム
                     </span>
                   ) : null}
                 </div>
-              </Flipped>
-              <div className="p-[8px]">
-                <div className="mb-[4px] text-[14px] font-bold text-[#ffffff]">
+              </Flipped >
+              <div style={{ padding: '8px' }}>
+                <div style={{ color: '#ffffff', fontSize: '14px', fontWeight: 'bold', marginBottom: '4px' }}>
                   <Ellipsis ellipsis reflowOnResize maxLine={2} text={episode.title} visibleLine={2} />
                 </div>
-                <div className="text-[12px] text-[#999999]">
+                <div style={{ color: '#999999', fontSize: '12px' }}>
                   <Ellipsis ellipsis reflowOnResize maxLine={2} text={episode.series.title} visibleLine={2} />
                 </div>
               </div>
@@ -46,6 +93,6 @@ export const EpisodeItem = ({ episode }: Props) => {
           );
         }}
       </NavLink>
-    </Hoverable>
+    </Hoverable >
   );
 };

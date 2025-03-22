@@ -27,9 +27,11 @@ export const CarouselSection = ({ module }: Props) => {
           ref={containerRefForItemWidth}
           data-scroll-restore={`carousel-${module.id}`}
           style={{
-            display: "grid",
+            // display: "grid",
+            display: "flex",
+            flexDirection: "row",
             gap: "12px",
-            gridTemplateColumns: "repeat(auto-fill, minmax(276px, 1fr))",
+            // gridTemplateColumns: "repeat(auto-fill, minmax(276px, 1fr))",
             marginLeft: "-24px",
             marginRight: "-24px",
             overflowX: "auto",
@@ -42,7 +44,7 @@ export const CarouselSection = ({ module }: Props) => {
           }}
         >
           {module.items.map((item) => (
-            <div key={item.id} style={{ scrollSnapAlign: 'start', width: `${itemWidth}px` }}>
+            <div key={item.id} style={{ flexGrow: 0, flexShrink: 0, scrollSnapAlign: 'start', width: `${itemWidth}px` }}>
               {item.series != null ? <SeriesItem series={item.series} /> : null}
               {item.episode != null ? <EpisodeItem episode={item.episode} /> : null}
             </div>
