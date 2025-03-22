@@ -1,6 +1,6 @@
 import HlsJs from 'hls.js';
 
-import type { PlayerType } from '@wsh-2025/client/src/features/player/constants/player_type';
+import { PlayerType } from '@wsh-2025/client/src/features/player/constants/player_type';
 import type { PlayerWrapper } from '@wsh-2025/client/src/features/player/interfaces/player_wrapper';
 
 class HlsJSPlayerWrapper implements PlayerWrapper {
@@ -10,10 +10,7 @@ class HlsJSPlayerWrapper implements PlayerWrapper {
     muted: true,
     volume: 0.25,
   });
-  private _player = new HlsJs({
-    enableWorker: false,
-    maxBufferLength: 50,
-  });
+  private _player = new HlsJs();
   readonly playerType: PlayerType.HlsJS;
 
   constructor(playerType: PlayerType.HlsJS) {
@@ -57,6 +54,6 @@ class HlsJSPlayerWrapper implements PlayerWrapper {
   }
 }
 
-export const createPlayer = (playerType: PlayerType): PlayerWrapper => {
-  return new HlsJSPlayerWrapper(playerType);
+export const createPlayer = (_playerType: PlayerType): PlayerWrapper => {
+  return new HlsJSPlayerWrapper(PlayerType.HlsJS);
 };
