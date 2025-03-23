@@ -1,0 +1,110 @@
+.c-adiv {
+  height: 100%;
+  width: 100%;
+}
+.c-bdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.c-img {
+  object-fit: contain;
+}
+.c-h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.c-form {
+  margin-bottom: 16px;
+}
+.c-form-div {
+  margin-bottom: 24px;
+}
+.c-form-div2 {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.c-form-divlabel {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.c-form-divspan {
+  color: #F0163A;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.c-input {
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF1F;
+  border-radius: 4px;
+  color: #212121;
+  font-size: 14px;
+  padding: 12px;
+  width: 100%;
+}
+.c-input::placeholder {
+  color: #999999;
+}
+.c-suberrdiv {
+  align-items: center;
+  background-color: #ffeeee;
+  border: 2px solid #F0163A;
+  border-radius: 4px;
+  color: #F0163A;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+  padding: 8px;
+  width: 100%;
+}
+.c-suberrSvg {
+  height: 20px;
+  margin: 4px;
+  width: 20px;
+}
+.c-subdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.c-subbtn {
+  align-items: center;
+  background-color: #1c43d1;
+  border-radius: 4px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: center;
+  opacity: 1;
+  padding: 12px;
+  width: 160px;
+}
+.c-subbtn:disabled {
+  opacity: 0.5;
+}
+.c-regdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.c-regbtn {
+  background-color: transparent;
+  color: #999999;
+  display: block;
+  font-size: 14px;
+  text-decoration: underline;
+}
