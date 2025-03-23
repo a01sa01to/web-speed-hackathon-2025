@@ -31,28 +31,29 @@ export const SeriesPage = () => {
   return (
     <>
       <title>{`${series.title} - AremaTV`}</title>
+      <link href="/public/styles/pages/series.css" rel="stylesheet" />
 
-      <div style={{ margin: 'auto', padding: '48px 24px' }}>
-        <header style={{ marginBottom: '24px', display: 'flex', width: '100%', flexDirection: 'row', alignItems: 'start', justifyContent: 'space-between', gap: '24px' }}>
+      <div className="r-root">
+        <header className="r-header">
           <Flipped stagger flipId={`series-${series.id}`}>
             <img
               alt=""
-              style={{ height: 'auto', width: '400px', flexShrink: 0, flexGrow: 0, borderRadius: '8px', border: '2px solid #FFFFFF1F' }}
+              className="r-img"
               decoding="sync" loading="eager" src={thumbUrl(series.thumbnailUrl, "lg")}
             />
           </Flipped>
-          <div style={{ flexGrow: 1, flexShrink: 1, overflow: 'hidden' }}>
-            <h1 style={{ marginBottom: '16px', fontSize: '32px', fontWeight: 'bold', color: '#ffffff' }}>
+          <div className="r-div">
+            <h1 className="r-h1">
               <Ellipsis ellipsis reflowOnResize maxLine={2} text={series.title} visibleLine={2} />
             </h1>
-            <div style={{ fontSize: '14px', color: '#999999' }}>
+            <div className="r-div2">
               <Ellipsis ellipsis reflowOnResize maxLine={3} text={series.description} visibleLine={3} />
             </div>
           </div>
         </header>
 
-        <div style={{ marginBottom: '24px' }}>
-          <h2 style={{ marginBottom: '12px', fontSize: '22px', fontWeight: 'bold', color: '#ffffff' }}>エピソード</h2>
+        <div className="r-div3">
+          <h2 className="r-h2">エピソード</h2>
           <SeriesEpisodeList episodes={series.episodes} selectedEpisodeId={null} />
         </div>
 
