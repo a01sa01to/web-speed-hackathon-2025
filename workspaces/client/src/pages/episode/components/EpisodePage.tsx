@@ -46,71 +46,26 @@ export const EpisodePage = () => {
   return (
     <>
       <title>{`${episode.title} - ${episode.series.title} - AremaTV`}</title>
+      <link href="/public/styles/pages/episode.css" rel="stylesheet" />
 
-      <div style={{ padding: "48px 24px" }}>
+      <div className="n-div">
         <Flipped stagger flipId={`episode-${episode.id}`}>
-          <div
-            style={{
-              height: "auto",
-              margin: "auto",
-              marginBottom: "16px",
-              maxWidth: "1280px",
-              outline: "1px solid #212121",
-              width: "100%",
-            }}
-          >
+          <div className="n-div2">
             {isSignInRequired ? (
-              <div style={{ height: "100%", position: "relative", width: "100%" }}>
+              <div className='n-div3'>
                 <img
                   alt=""
+                  className="n-img"
                   decoding="sync"
                   loading="eager"
                   src={thumbUrl(episode.thumbnailUrl, "lg")}
-                  style={{ height: "auto", width: "100%" }}
                 />
 
-                <div
-                  style={{
-                    alignItems: "center",
-                    backgroundColor: "#00000077",
-                    bottom: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    left: 0,
-                    padding: "24px",
-                    position: "absolute",
-                    right: 0,
-                    top: 0,
-                  }}
-                >
-                  <p
-                    style={{
-                      color: "#ffffff",
-                      fontSize: "24px",
-                      fontWeight: "bold",
-                      marginBottom: "32px",
-                    }}
-                  >
+                <div className="n-div4">
+                  <p className="n-p">
                     プレミアムエピソードの視聴にはログインが必要です
                   </p>
-                  <button
-                    style={{
-                      alignItems: "center",
-                      backgroundColor: "#1c43d1",
-                      borderRadius: "4px",
-                      color: "#ffffff",
-                      display: "flex",
-                      flexDirection: "row",
-                      fontSize: "14px",
-                      fontWeight: "bold",
-                      justifyContent: "center",
-                      padding: "12px",
-                      width: "160px",
-                    }}
-                    type="button"
-                    onClick={authActions.openSignInDialog}
-                  >
+                  <button className="n-btn" type="button" onClick={authActions.openSignInDialog}>
                     ログイン
                   </button>
                 </div>
@@ -119,45 +74,21 @@ export const EpisodePage = () => {
               <Suspense
                 fallback={
                   <AspectRatio ratioHeight={9} ratioWidth={16}>
-                    <div
-                      style={{
-                        display: "grid",
-                        height: "100%",
-                        width: "100%",
-                      }}
-                    >
+                    <div className="n-div5">
                       <img
                         alt=""
+                        className="n-img2"
                         decoding="sync"
                         loading="eager"
                         src={thumbUrl(episode.thumbnailUrl, "lg")}
-                        style={{
-                          gridArea: "1 / -1",
-                          height: "100%",
-                          placeSelf: "stretch",
-                          width: "100%",
-                        }}
                       />
-                      <div
-                        style={{
-                          backgroundColor: "#00000077",
-                          gridArea: "1 / -1",
-                          height: "100%",
-                          placeSelf: "stretch",
-                          width: "100%",
-                        }}
-                      />
+                      <div className="n-div6" />
                       {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
                       <svg
-                        height="1em"
-                        style={{
-                          color: "#ffffff",
-                          fontSize: "48px",
-                          gridArea: "1 / -1",
-                          placeSelf: "center",
-                        }}
+                        className="n-svg"
+                        height={48}
                         viewBox="0 0 24 24"
-                        width="1em"
+                        width={48}
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <g
@@ -205,22 +136,15 @@ export const EpisodePage = () => {
                   </AspectRatio>
                 }
               >
-                <div style={{ height: "100%", position: "relative", width: "100%" }}>
+                <div className="n-div7">
                   <Player
+                    className="n-player"
                     playerRef={playerRef}
                     playerType={PlayerType.HlsJS}
                     playlistUrl={`/streams/episode/${episode.id}/playlist.m3u8`}
-                    style={{ height: "100%", width: "100%" }}
                   />
 
-                  <div
-                    style={{
-                      bottom: 0,
-                      left: 0,
-                      position: "absolute",
-                      right: 0,
-                    }}
-                  >
+                  <div className="n-div8">
                     <PlayerController episode={episode} />
                   </div>
                 </div>
@@ -229,44 +153,33 @@ export const EpisodePage = () => {
           </div>
         </Flipped>
 
-        <div style={{ marginBottom: "24px" }}>
-          <div style={{ color: "#ffffff", fontSize: "16px" }}>
+        <div className="n-div9">
+          <div className="n-div10">
             <Ellipsis ellipsis reflowOnResize maxLine={1} text={episode.series.title} visibleLine={1} />
           </div>
-          <h1 style={{ color: "#ffffff", fontSize: "22px", fontWeight: "bold", marginTop: "8px" }}>
+          <h1 className="n-h1">
             <Ellipsis ellipsis reflowOnResize maxLine={2} text={episode.title} visibleLine={2} />
           </h1>
           {episode.premium ? (
-            <div style={{ marginTop: "8px" }}>
-              <span
-                style={{
-                  alignItems: "center",
-                  backgroundColor: "#1c43d1",
-                  borderRadius: "4px",
-                  color: "#ffffff",
-                  display: "inline-flex",
-                  fontSize: "10px",
-                  justifyContent: "center",
-                  padding: "4px",
-                }}
-              >
+            <div className="n-div11">
+              <span className="n-span">
                 プレミアム
               </span>
             </div>
           ) : null}
-          <div style={{ color: "#999999", fontSize: "16px", marginTop: "16px" }}>
+          <div className="n-div12">
             <Ellipsis ellipsis reflowOnResize maxLine={3} text={episode.description} visibleLine={3} />
           </div>
         </div>
 
         {modules[0] != null ? (
-          <div style={{ marginTop: "24px" }}>
+          <div className="n-div13">
             <RecommendedSection module={modules[0]} />
           </div>
         ) : null}
 
-        <div style={{ marginTop: "24px" }}>
-          <h2 style={{ color: "#ffffff", fontSize: "22px", fontWeight: "bold", marginBottom: "12px" }}>
+        <div className="n-div13">
+          <h2 className="n-h2">
             エピソード
           </h2>
           <SeriesEpisodeList episodes={episode.series.episodes} selectedEpisodeId={episode.id} />

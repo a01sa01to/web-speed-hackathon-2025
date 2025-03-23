@@ -1,0 +1,262 @@
+.n-div {
+  padding: 48px 24px;
+}
+.n-div2 {
+  height: auto;
+  margin: auto;
+  margin-bottom: 16px;
+  max-width: 1280px;
+  outline: 1px solid #212121;
+  width: 100%;
+}
+.n-div3 {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.n-img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  width: 100%;
+}
+.n-div4 {
+  align-items: center;
+  background-color: #00000077;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  padding: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.n-p {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+.n-btn {
+  align-items: center;
+  background-color: #1c43d1;
+  border-radius: 4px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: center;
+  padding: 12px;
+  width: 160px;
+}
+.n-div5 {
+  display: grid;
+  height: 100%;
+  width: 100%;
+}
+.n-img2 {
+  aspect-ratio: 16 / 9;
+  grid-area: 1 / -1;
+  height: 100%;
+  place-self: stretch;
+  width: 100%;
+}
+.n-div6 {
+  background-color: #00000077;
+  grid-area: 1 / -1;
+  height: 100%;
+  place-self: stretch;
+  width: 100%;
+}
+.n-svg {
+  color: #ffffff;
+  grid-area: 1 / -1;
+  place-self: center;
+}
+.n-div7 {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.n-player {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.n-div8 {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+.n-div9 {
+  margin-bottom: 24px;
+}
+.n-div10 {
+  color: #ffffff;
+  font-size: 16px;
+}
+.n-h1 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+.n-div11 {
+  margin-top: 8px;
+}
+.n-span {
+  align-items: center;
+  background-color: #1c43d1;
+  border-radius: 4px;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 10px;
+  justify-content: center;
+  padding: 4px;
+}
+.n-div12 {
+  color: #999999;
+  font-size: 16px;
+  margin-top: 16px;
+}
+.n-div13 {
+  margin-top: 24px;
+}
+.n-h2 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* controller */
+
+.n-link {
+  cursor: pointer;
+  background: transparent;
+  display: block;
+  border-radius: 4px;
+}
+.n-link:hover {
+  background: #ffffff1f;
+}
+.n-g:hover .opa100 {
+  opacity: 1;
+}
+.n-g:hover .h4 {
+  height: 4px;
+}
+.focusoutlinenone:focus {
+  outline: none;
+}
+.n-div14 {
+  height: 120px;
+  position: relative;
+}
+.n-div15 {
+  background: linear-gradient(to top, #212121, transparent);
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.n-div16 {
+  bottom: 0;
+  left: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: absolute;
+  right: 0;
+}
+.n-g1 {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.n-div17 {
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+  width: 100%;
+}
+.n-g2 {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  position: relative;
+  touch-action: none;
+  user-select: none;
+  width: 100%;
+}
+.n-track1 {
+  background: #999999;
+  border-radius: 4px;
+  flex-grow: 1;
+  height: 2px;
+  position: relative;
+}
+.n-rng {
+  background: #1c43d1;
+  border-radius: 4px;
+  height: 2px;
+  position: absolute;
+}
+.n-thumb {
+  background: #1c43d1;
+  border-radius: 10px;
+  display: block;
+  height: 20px;
+  opacity: 0;
+  width: 20px;
+}
+.n-div18 {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.n-div19 {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.n-playsvg {
+  color: #ffffff;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 14px;
+}
+.n-span2 {
+  color: #ffffff;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 4px;
+}
+.n-div20 {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+/* seekthumbnail */
+.n-div21 {
+  background-size: auto 100%;
+  bottom: 0;
+  height: 90px;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 160px;
+}

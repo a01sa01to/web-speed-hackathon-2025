@@ -31,16 +31,11 @@ export const SeekThumbnail = ({ episode }: Props) => {
   return (
     <div
       ref={ref}
+      className="n-div21"
       style={{
         background: `url(${seekThumbnail})`,
         backgroundPositionX: -1 * SEEK_THUMBNAIL_WIDTH * Math.floor(pointedTime),
-        backgroundSize: "auto 100%",
-        bottom: 0,
-        height: "90px",
         left: Math.max(MIN_LEFT, Math.min(relativeX, MAX_LEFT)),
-        position: "absolute",
-        transform: "translateX(-50%)",
-        width: "160px",
       }}
     />
   );
