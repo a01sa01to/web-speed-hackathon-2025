@@ -1,6 +1,6 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec';
 import type * as schema from '@wsh-2025/schema/src/api/schema';
-import { type ReactElement, useEffect, useId, useRef, useState } from 'react';
+import { type ReactElement, useEffect, useRef, useState } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import type { ArrayValues } from 'type-fest';
 
@@ -18,7 +18,6 @@ interface Props {
 
 export const Program = ({ height, program }: Props): ReactElement => {
   const width = useColumnWidth(program.channelId);
-  const linkId = useId().replaceAll(":", "_")
 
   const [selectedProgramId, setProgram] = useSelectedProgramId();
   const shouldProgramDetailDialogOpen = program.id === selectedProgramId;
@@ -47,50 +46,18 @@ export const Program = ({ height, program }: Props): ReactElement => {
 
   return (
     <>
-      <style>{`
-      .${linkId} {
-        cursor: pointer;
-        background-color: ${isBroadcasting ? '#FCF6E5' : '#212121'};
-        border: 1px solid #000000;
-        height: ${height}px;
-        opacity: ${isArchived ? "0.5" : "1"};
-        padding: 8px 12px;
-        textAlign: left;
-        width: ${width}px;
-      }
-      .${linkId}:hover {
-        filter: ${isArchived ? "brightness(2)" : "brightness(1.25)"};
-      }
-    `}</style>
       <button
-        className={linkId}
+        className={["s-link", isBroadcasting && "broadcasting", isArchived && "archived"].filter(Boolean).join(" ")}
+        style={{ height, width }}
         type="button"
         onClick={onClick}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', width: "100%" }}>
-          <div ref={titleRef} style={{ alignItems: 'start', display: 'flex', flexDirection: 'row', justifyContent: 'start', marginBottom: '8px' }}>
-            <span
-              style={{
-                color: isBroadcasting ? '#767676' : '#999999',
-                flexGrow: 0,
-                flexShrink: 0,
-                fontSize: '14px',
-                fontWeight: 'bold',
-                marginRight: '8px',
-              }}
-            >
+        <div className='s-prog-div'>
+          <div ref={titleRef} className="s-prog-div2">
+            <span className="s-span">
               {dayjs(program.startAt).tz().format("mm")}
             </span>
-            <div
-              style={{
-                color: isBroadcasting ? '#212121' : '#ffffff',
-                flexGrow: 1,
-                flexShrink: 1,
-                fontSize: '14px',
-                fontWeight: 'bold',
-                overflow: 'hidden',
-              }}
-            >
+            <div className="s-div3">
               <Ellipsis ellipsis reflowOnResize maxLine={3} text={program.title} visibleLine={3} />
             </div>
           </div>
@@ -98,16 +65,10 @@ export const Program = ({ height, program }: Props): ReactElement => {
             <img
               ref={imageRef}
               alt=""
+              className="s-progimg"
               decoding="async"
               loading="lazy"
               src={thumbUrl(program.thumbnailUrl, "md")}
-              style={{
-                aspectRatio: "16 / 9",
-                border: '2px solid #FFFFFF1F',
-                borderRadius: '8px',
-                pointerEvents: 'none',
-                width: '100%',
-              }}
             />
           </div>
         </div>

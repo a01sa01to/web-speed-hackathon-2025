@@ -35,13 +35,9 @@ export const Gutter = ({ channelId }: Props): ReactElement => {
   return (
     // biome-ignore lint/a11y/useFocusableInteractive: <explanation>
     <div
+      className="s-gutter"
       // biome-ignore lint/a11y/useAriaPropsForRole: <explanation>
       role="slider"
-      style={{
-        cursor: 'col-resize',
-        height: '100%',
-        width: '100%',
-      }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}

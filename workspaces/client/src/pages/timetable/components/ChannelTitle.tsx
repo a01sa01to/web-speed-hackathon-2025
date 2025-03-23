@@ -15,39 +15,25 @@ export const ChannelTitle = ({ channelId }: Props) => {
   const width = useColumnWidth(channelId);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className='s-title-container'>
       <div
-        style={{
-          borderLeft: '1px solid #212121',
-          borderRight: '1px solid #212121',
-          height: '72px',
-          padding: '14px',
-          width,
-        }}
+        className="s-title-div"
+        style={{ width }}
       >
         <img
           alt={channel.name}
+          className="s-title-img"
           draggable={false}
           height={60}
           src={channel.logoUrl.replace(
             '/public/',
             'https://wsh2025-a01sa01to.pages.dev/'
           ).replace(".svg", ".png")}
-          style={{ height: '100%', objectFit: 'contain', width: '100%' }}
           width={280}
         />
       </div>
 
-      <div
-        style={{
-          top: 0,
-          bottom: 0,
-          right: "-4px",
-          position: 'absolute',
-          width: '8px',
-          zIndex: 10,
-        }}
-      >
+      <div className="s-title-gutter-container">
         <Gutter channelId={channelId} />
       </div>
     </div>

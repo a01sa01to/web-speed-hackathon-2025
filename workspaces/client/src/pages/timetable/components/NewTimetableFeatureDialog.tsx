@@ -10,42 +10,30 @@ export const NewTimetableFeatureDialog = ({ isOpen }: Props) => {
 
   return (
     <Dialog isOpen={isOpen} onClose={onClose}>
-      <div style={{ height: '100%', width: '100%' }}>
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom: '16px', width: '100%' }}>
+      <div className="s-dialog-root">
+        <div className="s-div2">
           {/* biome-ignore lint/a11y/useAltText: <explanation> */}
-          <img height={36} src="https://wsh2025-a01sa01to.pages.dev/arema.svg" style={{ objectFit: 'contain' }} width={98} />
+          <img className="s-title-img" height={36} src="https://wsh2025-a01sa01to.pages.dev/arema.svg" width={98} />
         </div>
 
-        <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px', textAlign: 'center' }}>拡大・縮小機能を新しく追加</h2>
+        <h2 className="s-dialog-h2">拡大・縮小機能を新しく追加</h2>
 
-        <p style={{ color: '#999999', fontSize: '14px', marginBottom: '4px' }}>
+        <p className="s-dialog-desc">
           いつもAREMAをご利用いただきありがとうございます。この度、番組表の機能をさらに使いやすくするための新しい機能を追加しました。
         </p>
-        <p style={{ color: '#999999', fontSize: '14px', marginBottom: '4px' }}>
+        <p className="s-dialog-desc">
           番組表にあるそれぞれの番組タイトルをクリック &
           ドラッグすることで、簡単に拡大・縮小が可能になりました。この機能を利用すると、表示幅が狭くて途切れていたタイトルや詳細情報も全て確認することができるようになります！
         </p>
-        <p style={{ color: '#999999', fontSize: '14px', marginBottom: '24px' }}>
+        <p className='s-dialog-desc-last'>
           引き続き皆様に快適にご利用いただけるよう、サービスの改善に努めてまいります。今後ともどうぞよろしくお願いいたします。
         </p>
 
-        <img alt="" height={249} src="/public/assets/feature-explain.avif" style={{ marginBottom: '24px', width: '100%' }} width={444} />
+        <img alt="" className="s-dialog-img" height={249} src="/public/assets/feature-explain.avif" width={444} />
 
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+        <div className="s-dialog-btnc">
           <button
-            style={{
-              alignItems: 'center',
-              backgroundColor: '#1c43d1',
-              borderRadius: '4px',
-              color: '#ffffff',
-              display: 'flex',
-              flexDirection: 'row',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              justifyContent: 'center',
-              padding: '12px',
-              width: '160px',
-            }}
+            className="s-dialog-btn"
             type="button"
             onClick={onClose}
           >

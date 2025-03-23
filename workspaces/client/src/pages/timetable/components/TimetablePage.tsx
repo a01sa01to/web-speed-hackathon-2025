@@ -29,58 +29,26 @@ export const TimetablePage = () => {
   return (
     <>
       <title>番組表 - AremaTV</title>
+      <link href="/public/styles/pages/timetable.css" rel="stylesheet" />
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateAreas: `'channel channel' 'hours content'`,
-          height: '100%',
-          overflowX: 'auto',
-          overflowY: 'auto',
-          position: 'relative',
-          width: '100%',
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: '#000000',
-            display: 'flex',
-            flexDirection: 'row',
-            gridArea: 'channel',
-            paddingLeft: '24px',
-            position: 'sticky',
-            top: 0,
-            width: "fit-content",
-            zIndex: 20,
-          }}
-        >
+      <div className="s-root">
+        <div className="s-container">
           {channelIds.map((channelId) => (
-            <div key={channelId} style={{ flexGrow: 0, flexShrink: 0 }}>
+            <div key={channelId} className="s-item">
               <ChannelTitle channelId={channelId} />
             </div>
           ))}
         </div>
 
-        <div
-          style={{
-            backgroundColor: '#000000',
-            bottom: 0,
-            flexGrow: 0,
-            flexShrink: 0,
-            gridArea: 'hours',
-            position: 'sticky',
-            top: 0,
-            zIndex: 10,
-          }}
-        >
+        <div className="s-axiss">
           <TimelineYAxis />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'row', gridArea: 'content' }}>
+        <div className="s-div">
           {programLists.map((programList, index) => {
             const channelId = channelIds[index];
             invariant(channelId);
             return (
-              <div key={channelIds[index]} style={{ flexGrow: 0, flexShrink: 0 }}>
+              <div key={channelIds[index]} className="s-item">
                 <ProgramList channelId={channelId} programList={programList} />
               </div>
             );

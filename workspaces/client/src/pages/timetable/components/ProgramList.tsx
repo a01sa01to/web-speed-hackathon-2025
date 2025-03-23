@@ -15,8 +15,8 @@ interface Props {
 
 export const ProgramList = ({ channelId, programList }: Props): ReactElement => {
   return (
-    <div style={{ position: "relative" }}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className="s-title-container">
+      <div className="s-proglist">
         {programList.map((program) => {
           const startAt = dayjs(program.startAt).tz();
           const endAt = dayjs(program.endAt).tz();
@@ -31,16 +31,7 @@ export const ProgramList = ({ channelId, programList }: Props): ReactElement => 
         })}
       </div>
 
-      <div
-        style={{
-          bottom: 0,
-          position: "absolute",
-          right: "-4px",
-          top: 0,
-          width: "8px",
-          zIndex: 10,
-        }}
-      >
+      <div className="s-title-gutter-container">
         <Gutter channelId={channelId} />
       </div>
     </div>

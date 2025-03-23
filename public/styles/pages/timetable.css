@@ -1,0 +1,250 @@
+.s-root {
+  display: grid;
+  grid-template-areas: 'channel channel' 'hours content';
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+}
+.s-container {
+  background-color: #000000;
+  display: flex;
+  flex-direction: row;
+  grid-area: channel;
+  padding-left: 24px;
+  position: sticky;
+  top: 0;
+  width: fit-content;
+  z-index: 20;
+}
+.s-item {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.s-axis {
+  background-color: #000000;
+  bottom: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  grid-area: hours;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.s-div {
+  display: flex;
+  flex-direction: row;
+  grid-area: content;
+}
+
+/* channel title */
+.s-title-container {
+  position: relative;
+}
+.s-title-div {
+  border-left: 1px solid #212121;
+  border-right: 1px solid #212121;
+  height: 72px;
+  padding: 14px;
+}
+.s-title-img {
+  object-fit: contain;
+}
+.s-title-gutter-container {
+  top: 0;
+  bottom: 0;
+  right: -4px;
+  position: absolute;
+  width: 8px;
+  z-index: 10;
+}
+
+/* gutter */
+.s-gutter {
+  cursor: col-resize;
+  height: 100%;
+  width: 100%;
+}
+
+/* dialog */
+.s-dialog-root {
+  height: 100%;
+  width: 100%;
+}
+.s-div2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.s-dialog-h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.s-dialog-desc {
+  color: #999999;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.s-dialog-desc-last {
+  color: #999999;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.s-dialog-img {
+  margin-top: 24px;
+}
+.s-dialog-btnc {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.s-dialog-btn {
+  align-items: center;
+  background-color: #1c43d1;
+  border-radius: 4px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: center;
+  padding: 12px;
+  width: 160px;
+}
+
+/* program */
+.s-link {
+  cursor: pointer;
+  background-color: #212121;
+  border: 1px solid #000000;
+  opacity: 1;
+  padding: 8px 12px;
+  text-align: left;
+}
+.s-link:hover {
+  filter: brightness(1.25);
+}
+.s-link.broadcasting {
+  background-color: #FCF6E5;
+}
+.s-link.archived {
+  opacity: 0.5;
+}
+.s-link.archived:hover {
+  filter: brightness(2);
+}
+.s-prog-div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+.s-prog-div2 {
+  align-items: start;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin-bottom: 8px;
+}
+.s-span {
+  color: #999999;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+.s-link.broadcasting .s-span {
+  color: #767676;
+}
+.s-div3 {
+  color: #ffffff;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 14px;
+  font-weight: bold;
+  overflow: hidden;
+}
+.s-link.broadcasting .s-div3 {
+  color: #212121;
+}
+.s-progimg {
+  aspect-ratio: 16 / 9;
+  border: 2px solid #FFFFFF1F;
+  border-radius: 8px;
+  pointer-events: none;
+  width: 100%;
+}
+
+/* program detail */
+.s-progdet-dialog {
+  height: 75vh;
+  overflow: auto;
+  width: 100%;
+}
+.s-dialog-desc2 {
+  color: #999999;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.s-dialog-desc3 {
+  color: #999999;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.webkitbox {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  line-clamp: 5;
+}
+.s-progdet-img {
+  aspect-ratio: 16 / 9;
+  border: 2px solid #FFFFFF1F;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+.s-hogea {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* ProgramList */
+.s-proglist {
+  display: flex;
+  flex-direction: column;
+}
+
+/* timeline */
+.s-timelinehour {
+  align-items: center;
+  background-color: #000000;
+  border-bottom: 1px solid #212121;
+  border-top: 1px solid #212121;
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 480px;
+  justify-content: center;
+}
+.s-timeline-hs {
+  color: #ffffff;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.s-timeline {
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+}

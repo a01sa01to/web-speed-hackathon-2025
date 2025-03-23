@@ -23,60 +23,40 @@ export const ProgramDetailDialog = ({ isOpen, program }: Props): ReactElement =>
 
   return (
     <Dialog isOpen={isOpen} onClose={onClose}>
-      <div style={{ height: '75vh', overflow: 'auto', width: '100%' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px', textAlign: 'center' }}>番組詳細</h2>
+      <div className="s-progdet-dialog">
+        <h2 className="s-dialog-h2">番組詳細</h2>
 
-        <p style={{ color: '#ffffff', fontSize: '14px', fontWeight: 'bold', marginBottom: '8px' }}>{program.title}</p>
-        <div style={{ color: '#999999', fontSize: '14px', marginBottom: '16px' }}>
-          <div style={{ display: '-webkit-box', overflow: 'hidden', WebkitBoxOrient: 'vertical', WebkitLineClamp: 5 }}>{program.description}</div>
+        <p className="s-dialog-desc2">{program.title}</p>
+        <div className="s-dialog-desc3">
+          <div className="webkitbox">{program.description}</div>
         </div>
         <img
           alt=""
           decoding="async"
-          loading="lazy" src={thumbUrl(program.thumbnailUrl, "md")} style={{
-            border: '2px solid #ffffff1f',
-            borderRadius: '8px',
-            marginBottom: '24px',
-            width: '100%',
-          }}
+          loading="lazy" src={thumbUrl(program.thumbnailUrl, "md")}
+          className="s-progdet-img"
         />
 
         {episode != null ? (
           <>
-            <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px', textAlign: 'center' }}>番組で放送するエピソード</h3>
+            <h3 className='s-dialog-h2'>番組で放送するエピソード</h3>
 
-            <p style={{ color: '#ffffff', fontSize: '14px', fontWeight: 'bold', marginBottom: '8px' }}>{episode.title}</p>
-            <div style={{ color: '#999999', fontSize: '14px', marginBottom: '16px' }}>
-              <div style={{ display: '-webkit-box', overflow: 'hidden', WebkitBoxOrient: 'vertical', WebkitLineClamp: 5 }}>{episode.description}</div>
+            <p className="s-hogea">{episode.title}</p>
+            <div className="s-dialog-desc3">
+              <div className="webkitbox">{episode.description}</div>
             </div>
             <img
               alt=""
+              className="s-progdet-img"
               decoding="async"
-              loading="lazy" src={thumbUrl(episode.thumbnailUrl, "md")} style={{
-                border: '2px solid #ffffff1f',
-                borderRadius: '8px',
-                marginBottom: '24px',
-                width: '100%',
-              }}
+              loading="lazy" src={thumbUrl(episode.thumbnailUrl, "md")}
             />
           </>
         ) : null}
 
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+        <div className="s-dialog-btnc">
           <Link
-            style={{
-              alignItems: 'center',
-              backgroundColor: '#1c43d1',
-              borderRadius: '4px',
-              color: '#ffffff',
-              display: 'flex',
-              flexDirection: 'row',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              justifyContent: 'center',
-              padding: '12px',
-              width: '160px',
-            }}
+            className="s-dialog-btn"
             to={`/programs/${program.id}`}
             onClick={onClose}
           >
