@@ -18,8 +18,8 @@ export const ProgramList = ({ channelId, programList }: Props): ReactElement => 
     <div style={{ position: "relative" }}>
       <div style={{ display: "flex", flexDirection: "column" }}>
         {programList.map((program) => {
-          const startAt = dayjs.tz(program.startAt);
-          const endAt = dayjs.tz(program.endAt);
+          const startAt = dayjs(program.startAt).tz();
+          const endAt = dayjs(program.endAt).tz();
           const duration = endAt.diff(startAt, 'minutes');
           const height = HEIGHT_ONE_HOUR * (duration / 60);
 

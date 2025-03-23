@@ -7,12 +7,12 @@ import * as t from 'drizzle-orm/sqlite-core';
 import dayjs from "@wsh-2025/schema/src/utils/ext-dayjs";
 
 function parseTime(timeString: string): Dayjs {
-  const parsed = dayjs.tz(timeString, 'HH:mm:ss')
-  return dayjs.tz().set('hour', parsed.hour()).set('minute', parsed.minute()).set('second', parsed.second()).set('millisecond', 0);
+  const parsed = dayjs(timeString, "HH:mm:ss").tz()
+  return dayjs().tz().set('hour', parsed.hour()).set('minute', parsed.minute()).set('second', parsed.second()).set('millisecond', 0);
 }
 
 function formatTime(isoString: string): string {
-  return dayjs.tz(isoString).format('HH:mm:ss');
+  return dayjs().tz(isoString).format('HH:mm:ss');
 }
 
 // 競技のため、時刻のみ保持して、日付は現在の日付にします
@@ -42,7 +42,7 @@ const endAtTimestamp = t.customType<{
   },
   fromDriver(timeString: string) {
     const parsed = parseTime(timeString);
-    if (dayjs.tz().startOf("day").isSame(parsed)) {
+    if (dayjs().tz().startOf("day").isSame(parsed)) {
       return parsed.add(1, 'day').toISOString();
     }
     return parsed.toISOString();

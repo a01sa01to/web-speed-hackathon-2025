@@ -27,8 +27,8 @@ export const Program = ({ height, program }: Props): ReactElement => {
   };
 
   const currentUnixtimeMs = useCurrentUnixtimeMs();
-  const isBroadcasting = dayjs.tz(currentUnixtimeMs).isBetween(dayjs(program.startAt), dayjs(program.endAt));
-  const isArchived = dayjs.tz(program.endAt).isBefore(dayjs.tz())
+  const isBroadcasting = dayjs(currentUnixtimeMs).tz().isBetween(dayjs(program.startAt), dayjs(program.endAt));
+  const isArchived = dayjs(program.endAt).tz().isBefore(dayjs().tz())
 
   const titleRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
@@ -79,7 +79,7 @@ export const Program = ({ height, program }: Props): ReactElement => {
                 marginRight: '8px',
               }}
             >
-              {dayjs.tz(program.startAt).format("mm")}
+              {dayjs(program.startAt).tz().format("mm")}
             </span>
             <div
               style={{

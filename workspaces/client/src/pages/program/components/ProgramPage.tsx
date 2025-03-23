@@ -21,7 +21,7 @@ import { thumbUrl } from '@wsh-2025/client/src/utils/thumb';
 export const prefetch = async (store: ReturnType<typeof createStore>, { programId }: Params) => {
   invariant(programId);
 
-  const now = dayjs.tz();
+  const now = dayjs().tz();
   const until = now.endOf("day").toISOString();
 
   const program = await store.getState().features.program.fetchProgramById({ programId });
@@ -51,8 +51,8 @@ export const ProgramPage = () => {
 
   const forceUpdate = useUpdate();
   const navigate = useNavigate();
-  const isArchivedRef = useRef(dayjs(program.endAt).isBefore(dayjs.tz()));
-  const isBroadcastStarted = dayjs(program.startAt).isBefore(dayjs.tz());
+  const isArchivedRef = useRef(dayjs(program.endAt).isBefore(dayjs().tz()));
+  const isBroadcastStarted = dayjs(program.startAt).isBefore(dayjs().tz());
   useEffect(() => {
     if (isArchivedRef.current) {
       return;
@@ -71,7 +71,7 @@ export const ProgramPage = () => {
 
     // 放送中に次の番組が始まったら、画面をそのままにしつつ、情報を次の番組にする
     let timeout = setTimeout(function tick() {
-      if (dayjs.tz().isBefore(dayjs(program.endAt))) {
+      if (dayjs().tz().isBefore(dayjs(program.endAt))) {
         timeout = setTimeout(tick, 1000);
         return;
       }
@@ -205,7 +205,7 @@ export const ProgramPage = () => {
                       marginBottom: '32px',
                     }}
                   >
-                    この番組は {dayjs.tz(program.startAt).format('L月d日 H:mm')} に放送予定です
+                    この番組は {dayjs(program.startAt).tz().format('M月D日 H:mm')} に放送予定です
                   </p>
                 </div>
               </div>
@@ -234,9 +234,9 @@ export const ProgramPage = () => {
               marginTop: '8px',
             }}
           >
-            {dayjs.tz(program.startAt).format('L月d日 H:mm')}
+            {dayjs(program.startAt).tz().format('M月D日 H:mm')}
             {' 〜 '}
-            {dayjs.tz(program.endAt).format("L月d日 H:mm")}
+            {dayjs(program.endAt).tz().format("M月D日 H:mm")}
           </div>
           <div
             style={{

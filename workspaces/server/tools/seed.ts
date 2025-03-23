@@ -165,7 +165,7 @@ async function main() {
     const episodeListGroupedByStreamId = Object.values(Object.groupBy(episodeList, (episode) => episode.streamId));
     for (const channel of channelList) {
       let remainingMinutes = 24 * 60;
-      let startAt = dayjs.tz().startOf('day').valueOf();
+      let startAt = dayjs().tz().startOf('day').valueOf();
 
       while (remainingMinutes > 0) {
         const durationCandidate =

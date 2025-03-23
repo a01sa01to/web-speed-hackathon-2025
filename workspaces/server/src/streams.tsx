@@ -11,7 +11,7 @@ const SEQUENCE_COUNT_PER_PLAYLIST = 10;
 
 // 競技のため、時刻のみを返す
 function getTime(d: Date): number {
-  return d.getTime() - dayjs.tz(d).startOf('day').valueOf();
+  return d.getTime() - dayjs(d).tz().startOf('day').valueOf();
 }
 
 export function registerStreams(app: FastifyInstance): void {

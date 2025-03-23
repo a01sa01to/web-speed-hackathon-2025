@@ -10,7 +10,7 @@ import { useShownNewFeatureDialog } from '@wsh-2025/client/src/pages/timetable/h
 import dayjs from "@wsh-2025/client/src/utils/ext-dayjs";
 
 export const prefetch = async (store: ReturnType<typeof createStore>) => {
-  const now = dayjs.tz();
+  const now = dayjs().tz();
   const since = now.startOf('day').toISOString();
   const until = now.endOf('day').toISOString();
 
