@@ -91,7 +91,7 @@ export const ProgramPage = () => {
   return (
     <>
       <title>{`${program.title} - ${program.episode.series.title} - AremaTV`}</title>
-      <link href="/public/styles/pages/program.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/pages/program.css" rel="stylesheet" />
 
       <div className="q-root">
         <Flipped stagger flipId={`program-${program.id}`}>

@@ -18,7 +18,7 @@ interface Props {
 export const SeriesEpisodeItem = ({ episode, selected }: Props) => {
   return (
     <>
-      <link href="/public/styles/feat/series/episode-item.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/series/episode-item.css" rel="stylesheet" />
 
       <NavLink
         viewTransition

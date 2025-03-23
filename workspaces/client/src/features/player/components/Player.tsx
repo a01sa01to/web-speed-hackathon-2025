@@ -46,7 +46,7 @@ export const Player = ({ className, loop, playerRef, playerType, playlistUrl, st
 
   return (
     <>
-      <link href="/public/styles/feat/player.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/player.css" rel="stylesheet" />
 
       <div className={className} style={style}>
         <div className="g-root">

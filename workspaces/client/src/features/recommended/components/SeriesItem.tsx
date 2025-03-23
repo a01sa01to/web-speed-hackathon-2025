@@ -15,7 +15,7 @@ interface Props {
 export const SeriesItem = ({ series }: Props) => {
   return (
     <>
-      <link href="/public/styles/feat/recommended/series-item.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/recommended/series-item.css" rel="stylesheet" />
 
       <NavLink viewTransition className="k-link" to={`/series/${series.id}`}>
         {({ isTransitioning }) => {

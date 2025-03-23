@@ -31,7 +31,7 @@ export const SeriesPage = () => {
   return (
     <>
       <title>{`${series.title} - AremaTV`}</title>
-      <link href="/public/styles/pages/series.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/pages/series.css" rel="stylesheet" />
 
       <div className="r-root">
         <header className="r-header">

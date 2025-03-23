@@ -10,7 +10,7 @@ interface Props {
 export const Dialog = ({ children, isOpen, onClose }: Props) => {
   return (
     <>
-      <link href="/public/styles/feat/dialog.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/dialog.css" rel="stylesheet" />
 
       <HDialog
         className="d-dialog"

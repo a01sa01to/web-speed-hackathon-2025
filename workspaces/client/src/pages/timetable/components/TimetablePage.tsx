@@ -29,7 +29,7 @@ export const TimetablePage = () => {
   return (
     <>
       <title>番組表 - AremaTV</title>
-      <link href="/public/styles/pages/timetable.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/pages/timetable.css" rel="stylesheet" />
 
       <div className="s-root">
         <div className="s-container">

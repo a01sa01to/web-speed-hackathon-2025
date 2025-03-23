@@ -1,6 +1,6 @@
 export const Loading = () => {
   return (<>
-    <link href="/public/styles/feat/loading.css" rel="stylesheet" />
+    <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/loading.css" rel="stylesheet" />
 
     <div className="f-div">
       {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}

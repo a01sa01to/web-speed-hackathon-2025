@@ -15,7 +15,7 @@ export const HomePage = () => {
   return (
     <>
       <title>Home - AremaTV</title>
-      <link href="/public/styles/pages/home.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/pages/home.css" rel="stylesheet" />
 
       <div className="o-div">
         {modules.map((module) => {

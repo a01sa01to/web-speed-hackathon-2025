@@ -15,7 +15,7 @@ interface Props {
 export const SeriesEpisodeList = ({ episodes, selectedEpisodeId }: Props) => {
   return (
     <>
-      <link href="/public/styles/feat/series/episode-list.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/series/episode-list.css" rel="stylesheet" />
 
       <div className='l-div'>
         {episodes.map((episode) => (

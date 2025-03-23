@@ -18,7 +18,7 @@ interface Props {
 
 export const EpisodeItem = ({ episode }: Props) => {
   return (<>
-    <link href="/public/styles/feat/recommended/episode-item.css" rel="stylesheet" />
+    <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/recommended/episode-item.css" rel="stylesheet" />
 
     <NavLink viewTransition className="i-link" to={`/episodes/${episode.id}`}>
       {({ isTransitioning }) => {

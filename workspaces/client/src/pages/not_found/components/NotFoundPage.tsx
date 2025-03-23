@@ -16,7 +16,7 @@ export const NotFoundPage = () => {
   return (
     <>
       <title>見つかりません - AremaTV</title>
-      <link href="/public/styles/pages/not-found.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/pages/not-found.css" rel="stylesheet" />
 
       <div className="p-root">
         <section className="p-section">

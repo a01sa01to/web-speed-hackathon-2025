@@ -46,7 +46,7 @@ export const EpisodePage = () => {
   return (
     <>
       <title>{`${episode.title} - ${episode.series.title} - AremaTV`}</title>
-      <link href="/public/styles/pages/episode.css" rel="stylesheet" />
+      <link href="https://wsh2025-a01sa01to.pages.dev/styles/pages/episode.css" rel="stylesheet" />
 
       <div className="n-div">
         <Flipped stagger flipId={`episode-${episode.id}`}>
