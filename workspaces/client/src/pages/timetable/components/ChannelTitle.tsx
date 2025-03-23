@@ -32,7 +32,7 @@ export const ChannelTitle = ({ channelId }: Props) => {
           src={channel.logoUrl.replace(
             '/public/',
             'https://wsh2025-a01sa01to.pages.dev/'
-          )}
+          ).replace(".svg", ".png")}
           style={{ height: '100%', objectFit: 'contain', width: '100%' }}
           width={280}
         />
