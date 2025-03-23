@@ -25,11 +25,12 @@ export const prefetch = async (store: ReturnType<typeof createStore>, { programI
   const until = now.endOf('day').toISO();
 
   const program = await store.getState().features.program.fetchProgramById({ programId });
+  const channels = store.getState().features.channel.fetchChannels();
   const timetable = await store.getState().features.timetable.fetchTimetable({ channelId: program.channelId, since: program.endAt, until });
   const modules = await store
     .getState()
     .features.recommended.fetchRecommendedModulesByReferenceId({ limit: 1, referenceId: programId });
-  return { modules, program, timetable };
+  return { channels, modules, program, timetable };
 };
 
 export const ProgramPage = () => {
@@ -70,8 +71,11 @@ export const ProgramPage = () => {
     }
 
     // 放送中に次の番組が始まったら、画面をそのままにしつつ、情報を次の番組にする
-    const interval = setInterval(() => {
-      if (DateTime.now() < DateTime.fromISO(program.endAt)) return;
+    let timeout = setTimeout(function tick() {
+      if (DateTime.now() < DateTime.fromISO(program.endAt)) {
+        timeout = setTimeout(tick, 1000);
+        return;
+      }
       if (nextProgram?.id) {
         void navigate(`/programs/${nextProgram.id}`, {
           preventScrollReset: true,
@@ -82,10 +86,9 @@ export const ProgramPage = () => {
         isArchivedRef.current = true;
         forceUpdate();
       }
-      clearInterval(interval);
     }, 1000)
     return () => {
-      clearInterval(interval);
+      clearTimeout(timeout);
     };
   }, [isBroadcastStarted, nextProgram?.id]);
 
