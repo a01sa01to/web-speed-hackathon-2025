@@ -40,7 +40,9 @@ export const ChannelTitle = ({ channelId }: Props) => {
 
       <div
         style={{
-          inset: '0 auto auto -4px',
+          top: 0,
+          bottom: 0,
+          right: "-4px",
           position: 'absolute',
           width: '8px',
           zIndex: 10,

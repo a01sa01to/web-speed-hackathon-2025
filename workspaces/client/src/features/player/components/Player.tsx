@@ -52,7 +52,10 @@ export const Player = ({ className, loop, playerRef, playerType, playlistUrl, st
         <div
           style={{
             display: 'grid',
-            inset: '0',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
             placeContent: 'center',
             position: 'absolute',
             zIndex: -10,
