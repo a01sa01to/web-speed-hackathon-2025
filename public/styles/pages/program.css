@@ -1,0 +1,164 @@
+.q-root {
+  padding: 48px 24px;
+}
+.q-div {
+  margin: auto;
+  margin-bottom: 16px;
+  max-width: 1280px;
+  outline: 1px solid #212121;
+}
+.q-div2 {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.q-img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  width: 100%;
+}
+.q-div3 {
+  align-items: center;
+  background-color: #00000077;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  padding: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.q-p {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+.q-a {
+  align-items: center;
+  background-color: #1c43d1;
+  border-radius: 4px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: center;
+  padding: 12px;
+  width: 160px;
+}
+.q-div4 {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.q-player {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.q-div5 {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+.q-div6 {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.q-div7 {
+  margin-bottom: 24px;
+}
+.q-div8 {
+  color: #ffffff;
+  font-size: 16px;
+}
+.q-h1 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+.q-div9 {
+  color: #999999;
+  font-size: 16px;
+  margin-top: 8px;
+}
+.q-div10 {
+  color: #999999;
+  font-size: 16px;
+  margin-top: 16px;
+}
+.q-div11 {
+  margin-top: 24px;
+}
+.q-h2 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* controller */
+.q-link {
+  cursor: pointer;
+  background: transparent;
+  display: block;
+  border-radius: 4px;
+}
+.q-link:hover {
+  background: #FFFFFF1F;
+}
+.q-div12 {
+  height: 120px;
+  position: relative;
+}
+.q-div13 {
+  background-image: linear-gradient(to top, #212121, transparent);
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.q-div14 {
+  bottom: 0;
+  left: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: absolute;
+  right: 0;
+}
+.q-div15 {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.q-div16 {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.q-svg {
+  color: #ffffff;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 14px;
+}
+.q-span {
+  color: #ffffff;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 4px;
+}

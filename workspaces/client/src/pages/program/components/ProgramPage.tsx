@@ -91,66 +91,26 @@ export const ProgramPage = () => {
   return (
     <>
       <title>{`${program.title} - ${program.episode.series.title} - AremaTV`}</title>
+      <link href="/public/styles/pages/program.css" rel="stylesheet" />
 
-      <div style={{ padding: '48px 24px' }}>
+      <div className="q-root">
         <Flipped stagger flipId={`program-${program.id}`}>
-          <div
-            style={{
-              margin: 'auto',
-              marginBottom: '16px',
-              maxWidth: '1280px',
-              outline: '1px solid #212121',
-            }}
-          >
+          <div className="q-div">
             {isArchived ? (
-              <div style={{ height: '100%', position: 'relative', width: '100%' }}>
+              <div className="q-div2">
                 <img
                   alt=""
+                  className="q-img"
                   decoding="sync"
                   loading="eager"
                   src={thumbUrl(program.thumbnailUrl, 'lg')}
-                  style={{ aspectRatio: "16 / 9", height: 'auto', width: '100%' }}
                 />
 
-                <div
-                  style={{
-                    alignItems: 'center',
-                    backgroundColor: '#00000077',
-                    bottom: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    left: 0,
-                    padding: '24px',
-                    position: 'absolute',
-                    right: 0,
-                    top: 0,
-                  }}
-                >
-                  <p
-                    style={{
-                      color: '#ffffff',
-                      fontSize: '24px',
-                      fontWeight: 'bold',
-                      marginBottom: '32px',
-                    }}
-                  >
+                <div className="q-div3">
+                  <p className="q-p">
                     この番組は放送が終了しました
                   </p>
-                  <Link
-                    style={{
-                      alignItems: 'center',
-                      backgroundColor: '#1c43d1',
-                      borderRadius: '4px',
-                      color: '#ffffff',
-                      display: 'flex',
-                      flexDirection: 'row',
-                      fontSize: '14px',
-                      fontWeight: 'bold',
-                      justifyContent: 'center',
-                      padding: '12px',
-                      width: '160px',
-                    }}
+                  <Link className="q-a"
                     to={`/episodes/${program.episode.id}`}
                   >
                     見逃し視聴する
@@ -158,50 +118,29 @@ export const ProgramPage = () => {
                 </div>
               </div>
             ) : isBroadcastStarted ? (
-              <div style={{ height: '100%', position: 'relative', width: '100%' }}>
+              <div className="q-div4">
                 <Player
+                  className="q-player"
                   playerRef={playerRef}
                   playerType={PlayerType.VideoJS}
                   playlistUrl={`/streams/channel/${program.channel.id}/playlist.m3u8`}
-                  style={{ aspectRatio: "16 / 9", height: '100%', width: '100%' }}
                 />
-                <div style={{ bottom: 0, left: 0, position: 'absolute', right: 0 }}>
+                <div className="q-div5">
                   <PlayerController />
                 </div>
               </div>
             ) : (
-              <div style={{ height: '100%', position: 'relative', width: '100%' }}>
+              <div className='q-div6'>
                 <img
                   alt=""
+                  className="q-img"
                   decoding="sync"
                   loading="eager"
                   src={thumbUrl(program.thumbnailUrl, 'lg')}
-                  style={{ height: 'auto', width: '100%' }}
                 />
 
-                <div
-                  style={{
-                    alignItems: 'center',
-                    backgroundColor: '#00000077',
-                    bottom: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    left: 0,
-                    padding: '24px',
-                    position: 'absolute',
-                    right: 0,
-                    top: 0,
-                  }}
-                >
-                  <p
-                    style={{
-                      color: '#ffffff',
-                      fontSize: '24px',
-                      fontWeight: 'bold',
-                      marginBottom: '32px',
-                    }}
-                  >
+                <div className="q-div3">
+                  <p className="q-p">
                     この番組は {dayjs(program.startAt).tz().format('M月D日 H:mm')} に放送予定です
                   </p>
                 </div>
@@ -210,57 +149,31 @@ export const ProgramPage = () => {
           </div>
         </Flipped>
 
-        <div style={{ marginBottom: '24px' }}>
-          <div style={{ color: '#ffffff', fontSize: '16px' }}>
+        <div className="q-div7">
+          <div className="q-div8">
             <Ellipsis ellipsis reflowOnResize maxLine={1} text={program.episode.series.title} visibleLine={1} />
           </div>
-          <h1
-            style={{
-              color: '#ffffff',
-              fontSize: '22px',
-              fontWeight: 'bold',
-              marginTop: '8px',
-            }}
-          >
+          <h1 className="q-h1">
             <Ellipsis ellipsis reflowOnResize maxLine={2} text={program.title} visibleLine={2} />
           </h1>
-          <div
-            style={{
-              color: '#999999',
-              fontSize: '16px',
-              marginTop: '8px',
-            }}
-          >
+          <div className="q-div9">
             {dayjs(program.startAt).tz().format('M月D日 H:mm')}
             {' 〜 '}
             {dayjs(program.endAt).tz().format("M月D日 H:mm")}
           </div>
-          <div
-            style={{
-              color: '#999999',
-              fontSize: '16px',
-              marginTop: '16px',
-            }}
-          >
+          <div className="q-div10">
             <Ellipsis ellipsis reflowOnResize maxLine={3} text={program.description} visibleLine={3} />
           </div>
         </div>
 
         {modules[0] != null ? (
-          <div style={{ marginTop: '24px' }}>
+          <div className="q-div11">
             <RecommendedSection module={modules[0]} />
           </div>
         ) : null}
 
-        <div style={{ marginTop: '24px' }}>
-          <h2
-            style={{
-              color: '#ffffff',
-              fontSize: '22px',
-              fontWeight: 'bold',
-              marginBottom: '12px',
-            }}
-          >
+        <div className="q-div11">
+          <h2 className="q-h2">
             関連するエピソード
           </h2>
           <SeriesEpisodeList episodes={program.episode.series.episodes} selectedEpisodeId={program.episode.id} />
