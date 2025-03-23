@@ -15,11 +15,12 @@ export const HomePage = () => {
   return (
     <>
       <title>Home - AremaTV</title>
+      <link href="/public/styles/pages/home.css" rel="stylesheet" />
 
-      <div style={{ paddingBottom: "48px", paddingTop: "48px", width: '100%' }}>
+      <div className="o-div">
         {modules.map((module) => {
           return (
-            <div key={module.id} style={{ marginBottom: "24px", paddingLeft: "24px", paddingRight: "24px" }}>
+            <div key={module.id} className="o-items">
               <RecommendedSection module={module} />
             </div>
           );
