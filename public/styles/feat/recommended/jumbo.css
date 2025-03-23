@@ -1,0 +1,46 @@
+.j-link {
+  cursor: pointer;
+  align-items: center;
+  background-color: #171717;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  height: 260px;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+.j-link:hover {
+  opacity: 0.5;
+}
+.j-div {
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 24px;
+}
+.j-div2 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+  width: 100%;
+}
+.j-div3 {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+.j-div4 {
+  aspect-ratio: 16 / 9;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 100%;
+  width: auto;
+}
+.j-player {
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,12 @@
+.f-div {
+  align-items: center;
+  animation: fade-in 0.5s ease-in 0.5s both;
+  background-color: #000000cc;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

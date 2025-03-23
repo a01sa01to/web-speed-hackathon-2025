@@ -1,21 +1,10 @@
 export const Loading = () => {
-  return (
-    <div
-      style={{
-        alignItems: "center",
-        animation: "fade-in 0.5s ease-in 0.5s both",
-        backgroundColor: "#000000CC",
-        display: "flex",
-        height: "100%",
-        justifyContent: "center",
-        left: 0,
-        position: "absolute",
-        top: 0,
-        width: "100%",
-      }}
-    >
+  return (<>
+    <link href="/public/styles/feat/loading.css" rel="stylesheet" />
+
+    <div className="f-div">
       {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-      <svg height="1em" style={{ fontSize: "48px" }} viewBox="0 0 24 24" width="1em"
+      <svg height={48} viewBox="0 0 24 24" width={48}
         xmlns="http://www.w3.org/2000/svg">
         <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
           <path d="M12 3c4.97 0 9 4.03 9 9" strokeDasharray="16" strokeDashoffset="16">
@@ -28,5 +17,6 @@ export const Loading = () => {
         </g>
       </svg>
     </div>
+  </>
   );
 };

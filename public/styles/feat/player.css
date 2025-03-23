@@ -1,0 +1,22 @@
+.g-root {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.g-mounter {
+  height: 100%;
+  width: 100%;
+}
+.g-div2 {
+  display: grid;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  place-content: center;
+  position: absolute;
+  z-index: -10;
+}
+.g-svg {
+  color: #ffffff;
+}

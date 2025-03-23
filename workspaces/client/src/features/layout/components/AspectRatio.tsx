@@ -8,7 +8,7 @@ interface Props {
 
 export const AspectRatio = ({ children, ratioHeight, ratioWidth }: Props) => {
   return (
-    <div style={{ aspectRatio: `${ratioWidth}/${ratioHeight}`, position: "relative", width: "100%" }}>
+    <div style={{ aspectRatio: `${ratioWidth} / ${ratioHeight}`, position: "relative", width: "100%" }}>
       {children}
     </div>
   );

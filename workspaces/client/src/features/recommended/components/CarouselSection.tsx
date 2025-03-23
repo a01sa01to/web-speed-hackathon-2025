@@ -15,36 +15,19 @@ export const CarouselSection = ({ module }: Props) => {
 
   return (
     <>
-      <div style={{ width: "100%" }}>
-        <h2 style={{
-          fontSize: "22px",
-          fontWeight: "bold",
-          marginBottom: "16px",
-          width: "100%"
-        }}>{module.title}</h2>
+      <link href="/public/styles/feat/recommended/carousel.css" rel="stylesheet" />
+
+      <div className='h-root'>
+        <h2 className="h-h2">{module.title}</h2>
         <div
           key={module.id}
           ref={containerRefForItemWidth}
+          className="h-div"
           data-scroll-restore={`carousel-${module.id}`}
-          style={{
-            columnGap: "12px",
-            // display: "grid",
-            display: "flex",
-            flexDirection: "row",
-            // gridTemplateColumns: "repeat(auto-fill, minmax(276px, 1fr))",
-            marginLeft: "-24px",
-            marginRight: "-24px",
-            overflowX: "auto",
-            overflowY: "hidden",
-            paddingLeft: "24px",
-            paddingRight: '56px',
-            position: "relative",
-            scrollPaddingLeft: '24px',
-            scrollSnapType: 'x mandatory',
-          }}
+          style={{ '--item-width': `${itemWidth}px` }}
         >
           {module.items.map((item) => (
-            <div key={item.id} style={{ flexGrow: 0, flexShrink: 0, scrollSnapAlign: 'start', width: `${itemWidth}px` }}>
+            <div key={item.id} className="h-container">
               {item.series != null ? <SeriesItem series={item.series} /> : null}
               {item.episode != null ? <EpisodeItem episode={item.episode} /> : null}
             </div>

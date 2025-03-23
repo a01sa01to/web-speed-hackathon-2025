@@ -14,12 +14,17 @@ interface Props {
 
 export const SeriesEpisodeList = ({ episodes, selectedEpisodeId }: Props) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '16px', width: '100%' }}>
-      {episodes.map((episode) => (
-        <div key={episode.id} style={{ flexGrow: 0, flexShrink: 0 }}>
-          <SeriesEpisodeItem episode={episode} selected={episode.id === selectedEpisodeId} />
-        </div>
-      ))}
-    </div>
+    <>
+      <link href="/public/styles/feat/series/episode-list.css" rel="stylesheet" />
+
+      <div className='l-div'>
+        {episodes.map((episode) => (
+          <div key={episode.id} className="l-div2">
+            <SeriesEpisodeItem episode={episode} selected={episode.id === selectedEpisodeId} />
+          </div>
+        ))}
+      </div>
+
+    </>
   );
 };

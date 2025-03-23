@@ -1,0 +1,28 @@
+.k-link {
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+.k-link:hover {
+  opacity: 0.75;
+}
+.k-div {
+  border: 2px solid #ffffff1f;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.k-img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  width: 100%;
+}
+.k-div2 {
+  padding: 8px;
+}
+.k-div3 {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+}

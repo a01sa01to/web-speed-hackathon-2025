@@ -1,0 +1,21 @@
+.d-dialog {
+  align-items: center;
+  background-color: #00000077;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 50;
+}
+.d-dp {
+  background-color: #171717;
+  border: 2px solid #FFFFFF1F;
+  border-radius: 8px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 32px 16px;
+  width: 480px;
+}

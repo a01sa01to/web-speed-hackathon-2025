@@ -1,0 +1,29 @@
+.h-root {
+  width: 100%;
+}
+.h-h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.h-div {
+  column-gap: 12px;
+  display: flex;
+  flex-direction: row;
+  margin-left: -24px;
+  margin-right: -24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-left: 24px;
+  padding-right: 56px;
+  position: relative;
+  scroll-padding-left: 24px;
+  scroll-snap-type: x mandatory;
+}
+.h-container {
+  flex-grow: 0;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: var(--item-width);
+}

@@ -45,36 +45,29 @@ export const Player = ({ className, loop, playerRef, playerType, playlistUrl, st
   }, [playerType, playlistUrl, loop]);
 
   return (
-    <div className={className} style={style}>
-      <div style={{ height: '100%', position: 'relative', width: '100%' }}>
-        <div ref={mountRef} style={{ height: '100%', width: '100%' }} />
+    <>
+      <link href="/public/styles/feat/player.css" rel="stylesheet" />
 
-        <div
-          style={{
-            display: 'grid',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            placeContent: 'center',
-            position: 'absolute',
-            zIndex: -10,
-          }}
-        >
-          {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-          <svg height="1em" style={{ color: '#ffffff', height: '48px', width: '48px' }} viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg">
-            <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
-              <path d="M12 3c4.97 0 9 4.03 9 9" strokeDasharray="16" strokeDashoffset="16">
-                <animate attributeName="stroke-dashoffset" dur="0.3s" fill="freeze" values="16;0" />
-                <animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12" />
-              </path>
-              <path d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z" strokeDasharray="64" strokeDashoffset="64" strokeOpacity=".3">
-                <animate attributeName="stroke-dashoffset" dur="1.2s" fill="freeze" values="64;0" />
-              </path>
-            </g>
-          </svg>
+      <div className={className} style={style}>
+        <div className="g-root">
+          <div ref={mountRef} className="g-mounter" />
+
+          <div className="g-div2">
+            {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+            <svg height={48} viewBox="0 0 24 24" width={48} xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+                <path d="M12 3c4.97 0 9 4.03 9 9" strokeDasharray="16" strokeDashoffset="16">
+                  <animate attributeName="stroke-dashoffset" dur="0.3s" fill="freeze" values="16;0" />
+                  <animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12" />
+                </path>
+                <path d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z" strokeDasharray="64" strokeDashoffset="64" strokeOpacity=".3">
+                  <animate attributeName="stroke-dashoffset" dur="1.2s" fill="freeze" values="64;0" />
+                </path>
+              </g>
+            </svg>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
