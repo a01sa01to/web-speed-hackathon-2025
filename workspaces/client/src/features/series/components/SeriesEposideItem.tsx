@@ -67,16 +67,17 @@ export const SeriesEpisodeItem = ({ episode, selected }: Props) => {
                 <div className={divId}>
                   <img alt="" decoding="async" loading="lazy" src={thumbUrl(episode.thumbnailUrl, "sm")} style={{ aspectRatio: "16 / 9", height: "auto", width: "192px" }} />
                   {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-                  <svg height="1em"
+                  <svg
                     style={{
                       bottom: '4px',
                       color: '#ffffff',
                       display: 'block',
-                      fontSize: '20px',
+                      height: '20px',
                       left: '4px',
                       margin: '4px',
+                      position: "absolute",
                       width: '20px',
-                    }} viewBox="0 0 24 24" width="1em"
+                    }} viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 17.175V6.825q0-.425.3-.713t.7-.287q.125 0 .263.037t.262.113l8.15 5.175q.225.15.338.375t.112.475t-.112.475t-.338.375l-8.15 5.175q-.125.075-.262.113T9 18.175q-.4 0-.7-.288t-.3-.712" fill="currentColor" />
                   </svg>
