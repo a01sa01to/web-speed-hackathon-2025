@@ -60,13 +60,12 @@ export const ProgramPage = () => {
 
     // 放送前であれば、放送開始になるまで待機
     if (!isBroadcastStarted) {
-      const interval = setInterval(() => {
-        if (dayjs.tz().isBefore(dayjs(program.startAt))) return;
-        forceUpdate();
-        clearInterval(interval);
+      let timeout = setTimeout(function tick() {
+        forceUpdate()
+        timeout = setTimeout(tick, 1000)
       }, 1000)
       return () => {
-        clearInterval(interval);
+        clearTimeout(timeout);
       };
     }
 
