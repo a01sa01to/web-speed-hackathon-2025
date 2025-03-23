@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon';
 import invariant from 'tiny-invariant';
 
 import type { createStore } from '@wsh-2025/client/src/app/createStore';
@@ -8,11 +7,12 @@ import { NewTimetableFeatureDialog } from '@wsh-2025/client/src/pages/timetable/
 import { ProgramList } from '@wsh-2025/client/src/pages/timetable/components/ProgramList';
 import { TimelineYAxis } from '@wsh-2025/client/src/pages/timetable/components/TimelineYAxis';
 import { useShownNewFeatureDialog } from '@wsh-2025/client/src/pages/timetable/hooks/useShownNewFeatureDialog';
+import dayjs from "@wsh-2025/client/src/utils/ext-dayjs";
 
 export const prefetch = async (store: ReturnType<typeof createStore>) => {
-  const now = DateTime.now();
-  const since = now.startOf('day').toISO();
-  const until = now.endOf('day').toISO();
+  const now = dayjs.tz();
+  const since = now.startOf('day').toISOString();
+  const until = now.endOf('day').toISOString();
 
   const channels = store.getState().features.channel.fetchChannels();
   const programs = await store.getState().features.timetable.fetchTimetable({ since, until });

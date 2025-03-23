@@ -1,7 +1,7 @@
-import { DateTime } from 'luxon';
 import type { ArrayValues } from 'type-fest';
 
 import { useStore } from '@wsh-2025/client/src/app/StoreContext';
+import dayjs from "@wsh-2025/client/src/utils/ext-dayjs";
 
 type ChannelId = string;
 
@@ -23,7 +23,7 @@ export function useTimetable() {
     }
 
     record[channel.id] = filteredPrograms.sort((a, b) => {
-      return DateTime.fromISO(a.startAt).toMillis() - DateTime.fromISO(b.startAt).toMillis();
+      return dayjs(a.startAt).valueOf() - dayjs(b.startAt).valueOf();
     });
   }
 

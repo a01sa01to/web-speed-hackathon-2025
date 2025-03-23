@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon';
 import { useEffect, useRef } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import { Flipped } from 'react-flip-toolkit';
@@ -16,13 +15,14 @@ import { SeriesEpisodeList } from '@wsh-2025/client/src/features/series/componen
 import { useTimetable } from '@wsh-2025/client/src/features/timetable/hooks/useTimetable';
 import { PlayerController } from '@wsh-2025/client/src/pages/program/components/PlayerController';
 import { usePlayerRef } from '@wsh-2025/client/src/pages/program/hooks/usePlayerRef';
+import dayjs from "@wsh-2025/client/src/utils/ext-dayjs";
 import { thumbUrl } from '@wsh-2025/client/src/utils/thumb';
 
 export const prefetch = async (store: ReturnType<typeof createStore>, { programId }: Params) => {
   invariant(programId);
 
-  const now = DateTime.now();
-  const until = now.endOf('day').toISO();
+  const now = dayjs.tz();
+  const until = now.endOf("day").toISOString();
 
   const program = await store.getState().features.program.fetchProgramById({ programId });
   const channels = store.getState().features.channel.fetchChannels();
@@ -42,7 +42,7 @@ export const ProgramPage = () => {
 
   const timetable = useTimetable();
   const nextProgram = timetable[program.channel.id]?.find((p) => {
-    return DateTime.fromISO(program.endAt).equals(DateTime.fromISO(p.startAt));
+    return dayjs(program.endAt).isSame(dayjs(p.startAt))
   });
 
   const modules = useRecommended({ referenceId: programId });
@@ -51,8 +51,8 @@ export const ProgramPage = () => {
 
   const forceUpdate = useUpdate();
   const navigate = useNavigate();
-  const isArchivedRef = useRef(DateTime.fromISO(program.endAt) <= DateTime.now());
-  const isBroadcastStarted = DateTime.fromISO(program.startAt) <= DateTime.now();
+  const isArchivedRef = useRef(dayjs(program.endAt).isBefore(dayjs.tz()));
+  const isBroadcastStarted = dayjs(program.startAt).isBefore(dayjs.tz());
   useEffect(() => {
     if (isArchivedRef.current) {
       return;
@@ -61,7 +61,7 @@ export const ProgramPage = () => {
     // 放送前であれば、放送開始になるまで待機
     if (!isBroadcastStarted) {
       const interval = setInterval(() => {
-        if (DateTime.now() < DateTime.fromISO(program.startAt)) return;
+        if (dayjs.tz().isBefore(dayjs(program.startAt))) return;
         forceUpdate();
         clearInterval(interval);
       }, 1000)
@@ -72,7 +72,7 @@ export const ProgramPage = () => {
 
     // 放送中に次の番組が始まったら、画面をそのままにしつつ、情報を次の番組にする
     let timeout = setTimeout(function tick() {
-      if (DateTime.now() < DateTime.fromISO(program.endAt)) {
+      if (dayjs.tz().isBefore(dayjs(program.endAt))) {
         timeout = setTimeout(tick, 1000);
         return;
       }
@@ -206,7 +206,7 @@ export const ProgramPage = () => {
                       marginBottom: '32px',
                     }}
                   >
-                    この番組は {DateTime.fromISO(program.startAt).toFormat('L月d日 H:mm')} に放送予定です
+                    この番組は {dayjs.tz(program.startAt).format('L月d日 H:mm')} に放送予定です
                   </p>
                 </div>
               </div>
@@ -235,9 +235,9 @@ export const ProgramPage = () => {
               marginTop: '8px',
             }}
           >
-            {DateTime.fromISO(program.startAt).toFormat('L月d日 H:mm')}
+            {dayjs.tz(program.startAt).format('L月d日 H:mm')}
             {' 〜 '}
-            {DateTime.fromISO(program.endAt).toFormat('L月d日 H:mm')}
+            {dayjs.tz(program.endAt).format("L月d日 H:mm")}
           </div>
           <div
             style={{

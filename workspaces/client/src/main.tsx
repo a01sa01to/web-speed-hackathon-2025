@@ -1,5 +1,3 @@
-import '@wsh-2025/client/src/setups/luxon';
-
 import { StrictMode } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { createBrowserRouter, type HydrationState, RouterProvider } from 'react-router';

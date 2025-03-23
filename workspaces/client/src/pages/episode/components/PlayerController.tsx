@@ -1,7 +1,6 @@
 import * as Slider from '@radix-ui/react-slider';
 import type { StandardSchemaV1 } from '@standard-schema/spec';
 import type * as schema from '@wsh-2025/schema/src/api/schema';
-import { Duration } from 'luxon';
 import { useId } from "react"
 import invariant from 'tiny-invariant';
 
@@ -10,6 +9,7 @@ import { useCurrentTime } from '@wsh-2025/client/src/pages/episode/hooks/useCurr
 import { useDuration } from '@wsh-2025/client/src/pages/episode/hooks/useDuration';
 import { useMuted } from '@wsh-2025/client/src/pages/episode/hooks/useMuted';
 import { usePlaying } from '@wsh-2025/client/src/pages/episode/hooks/usePlaying';
+import dayjs from "@wsh-2025/client/src/utils/ext-dayjs";
 
 interface Props {
   episode: StandardSchemaV1.InferOutput<typeof schema.getEpisodeByIdResponse>;
@@ -129,9 +129,9 @@ export const PlayerController = ({ episode }: Props) => {
                 </button>
 
                 <span style={{ color: "#FFFFFF", display: "block", flexGrow: 0, flexShrink: 0, fontSize: "12px", fontWeight: "bold", marginLeft: "4px" }}>
-                  {Duration.fromObject({ seconds: currentTime }).toFormat('mm:ss')}
+                  {dayjs.duration(currentTime, "seconds").format("mm:ss")}
                   {' / '}
-                  {Duration.fromObject({ seconds: duration }).toFormat('mm:ss')}
+                  {dayjs.duration(duration, "seconds").format("mm:ss")}
                 </span>
               </div>
             </div>

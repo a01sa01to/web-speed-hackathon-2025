@@ -1,6 +1,5 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec';
 import type * as schema from '@wsh-2025/schema/src/api/schema';
-import { DateTime } from 'luxon';
 import { type ReactElement, useEffect, useId, useRef, useState } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import type { ArrayValues } from 'type-fest';
@@ -9,6 +8,7 @@ import { ProgramDetailDialog } from '@wsh-2025/client/src/pages/timetable/compon
 import { useColumnWidth } from '@wsh-2025/client/src/pages/timetable/hooks/useColumnWidth';
 import { useCurrentUnixtimeMs } from '@wsh-2025/client/src/pages/timetable/hooks/useCurrentUnixtimeMs';
 import { useSelectedProgramId } from '@wsh-2025/client/src/pages/timetable/hooks/useSelectedProgramId';
+import dayjs from "@wsh-2025/client/src/utils/ext-dayjs";
 import { thumbUrl } from '@wsh-2025/client/src/utils/thumb';
 
 interface Props {
@@ -27,10 +27,8 @@ export const Program = ({ height, program }: Props): ReactElement => {
   };
 
   const currentUnixtimeMs = useCurrentUnixtimeMs();
-  const isBroadcasting =
-    DateTime.fromISO(program.startAt).toMillis() <= DateTime.fromMillis(currentUnixtimeMs).toMillis() &&
-    DateTime.fromMillis(currentUnixtimeMs).toMillis() < DateTime.fromISO(program.endAt).toMillis();
-  const isArchived = DateTime.fromISO(program.endAt).toMillis() <= DateTime.fromMillis(currentUnixtimeMs).toMillis();
+  const isBroadcasting = dayjs.tz(currentUnixtimeMs).isBetween(dayjs(program.startAt), dayjs(program.endAt));
+  const isArchived = dayjs.tz(program.endAt).isBefore(dayjs.tz())
 
   const titleRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
@@ -81,7 +79,7 @@ export const Program = ({ height, program }: Props): ReactElement => {
                 marginRight: '8px',
               }}
             >
-              {DateTime.fromISO(program.startAt).toFormat('mm')}
+              {dayjs.tz(program.startAt).format("mm")}
             </span>
             <div
               style={{

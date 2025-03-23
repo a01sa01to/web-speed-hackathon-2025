@@ -1,23 +1,18 @@
 /* eslint-disable sort/object-properties */
-import '@wsh-2025/schema/src/setups/luxon';
-
+import type { Dayjs } from "dayjs";
 import { relations } from 'drizzle-orm';
 import { sqliteTable as table } from 'drizzle-orm/sqlite-core';
 import * as t from 'drizzle-orm/sqlite-core';
-import { DateTime } from 'luxon';
 
-function parseTime(timeString: string): DateTime {
-  const parsed = DateTime.fromFormat(timeString, 'HH:mm:ss').toObject();
-  return DateTime.now().set({
-    hour: parsed.hour,
-    minute: parsed.minute,
-    second: parsed.second,
-    millisecond: 0,
-  });
+import dayjs from "@wsh-2025/schema/src/utils/ext-dayjs";
+
+function parseTime(timeString: string): Dayjs {
+  const parsed = dayjs.tz(timeString, 'HH:mm:ss')
+  return dayjs.tz().set('hour', parsed.hour()).set('minute', parsed.minute()).set('second', parsed.second()).set('millisecond', 0);
 }
 
 function formatTime(isoString: string): string {
-  return DateTime.fromISO(isoString).toFormat('HH:mm:ss');
+  return dayjs.tz(isoString).format('HH:mm:ss');
 }
 
 // 競技のため、時刻のみ保持して、日付は現在の日付にします
@@ -29,7 +24,7 @@ const startAtTimestamp = t.customType<{
     return 'text';
   },
   fromDriver(timeString: string) {
-    return parseTime(timeString).toISO();
+    return parseTime(timeString).toISOString()
   },
   toDriver(isoString: string) {
     return formatTime(isoString);
@@ -47,10 +42,10 @@ const endAtTimestamp = t.customType<{
   },
   fromDriver(timeString: string) {
     const parsed = parseTime(timeString);
-    if (DateTime.now().startOf('day').equals(parsed)) {
-      return parsed.plus({ day: 1 }).toISO();
+    if (dayjs.tz().startOf("day").isSame(parsed)) {
+      return parsed.add(1, 'day').toISOString();
     }
-    return parsed.toISO();
+    return parsed.toISOString();
   },
   toDriver(isoString: string) {
     return formatTime(isoString);

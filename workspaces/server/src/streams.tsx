@@ -2,16 +2,16 @@ import { randomBytes } from 'node:crypto';
 
 import dedent from 'dedent';
 import type { FastifyInstance } from 'fastify';
-import { DateTime } from 'luxon';
 
 import { getDatabase } from '@wsh-2025/server/src/drizzle/database';
+import dayjs from '@wsh-2025/server/src/utils/ext-dayjs';
 
 const SEQUENCE_DURATION_MS = 2 * 1000;
 const SEQUENCE_COUNT_PER_PLAYLIST = 10;
 
 // 競技のため、時刻のみを返す
 function getTime(d: Date): number {
-  return d.getTime() - DateTime.fromJSDate(d).startOf('day').toMillis();
+  return d.getTime() - dayjs.tz(d).startOf('day').valueOf();
 }
 
 export function registerStreams(app: FastifyInstance): void {

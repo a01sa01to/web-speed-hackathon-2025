@@ -1,5 +1,3 @@
-import '@wsh-2025/server/src/setups/luxon';
-
 import cors from '@fastify/cors';
 import fastify from 'fastify';
 
