@@ -1,0 +1,18 @@
+.p-root {
+  padding: 48px 32px;
+  width: 100%;
+}
+.p-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 32px;
+  row-gap: 20px;
+  width: 100%;
+}
+.p-h1 {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: bold;
+}

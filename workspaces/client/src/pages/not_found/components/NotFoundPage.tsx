@@ -16,20 +16,11 @@ export const NotFoundPage = () => {
   return (
     <>
       <title>見つかりません - AremaTV</title>
+      <link href="/public/styles/pages/not-found.css" rel="stylesheet" />
 
-      <div style={{ padding: '48px 32px', width: '100%' }}>
-        <section
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            marginBottom: '32px',
-            rowGap: '20px',
-            width: '100%',
-          }}
-        >
-          <h1 style={{ color: '#ffffff', fontSize: '32px', fontWeight: 'bold' }}>
+      <div className="p-root">
+        <section className="p-section">
+          <h1 className="p-h1">
             ページが見つかりませんでした
           </h1>
           <p>あなたが見ようとしたページは、残念ながら見つけられませんでした。</p>
