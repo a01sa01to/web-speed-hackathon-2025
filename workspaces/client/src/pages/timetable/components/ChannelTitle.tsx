@@ -15,7 +15,7 @@ export const ChannelTitle = ({ channelId }: Props) => {
   const width = useColumnWidth(channelId);
 
   return (
-    <div className="relative">
+    <div style={{ position: 'relative' }}>
       <div
         style={{
           borderLeft: '1px solid #212121',

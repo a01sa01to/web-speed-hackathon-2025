@@ -26,18 +26,18 @@ export const SignOutDialog = ({ isOpen, onClose }: Props) => {
 
   return (
     <Dialog isOpen={isOpen} onClose={onClose}>
-      <div className="size-full">
-        <div className="mb-[16px] flex w-full flex-row justify-center">
+      <div style={{ height: "100%", width: "100%" }}>
+        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", marginBottom: "16px", width: "100%" }}>
           {/* biome-ignore lint/a11y/useAltText: <explanation> */}
-          <img className="object-contain" height={36} src="https://wsh2025-a01sa01to.pages.dev/arema.svg" width={98} />
+          <img height={36} src="https://wsh2025-a01sa01to.pages.dev/arema.svg" style={{ objectFit: "contain" }} width={98} />
         </div>
 
-        <h2 className="mb-[24px] text-center text-[24px] font-bold">ログアウト</h2>
+        <h2 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "24px", textAlign: "center" }}>ログアウト</h2>
 
         <Form onSubmit={onSubmit}>
           {({ handleSubmit, submitError }) => (
-            <form className="mb-[16px]" onSubmit={(ev) => void handleSubmit(ev)}>
-              <div className="mb-[24px] flex w-full flex-row items-center justify-start rounded-[4px] border-[2px] border-solid border-[#DDAA00] bg-[#fffcee] p-[8px] text-[14px] font-bold text-[#DDAA00]">
+            <form style={{ marginBottom: "16px" }} onSubmit={(ev) => void handleSubmit(ev)}>
+              <div style={{ alignItems: "center", backgroundColor: "#fffcee", border: "2px solid #DDAA00", borderRadius: "4px", color: "#DDAA00", display: "flex", flexDirection: "row", fontSize: "14px", fontWeight: "bold", justifyContent: "start", marginBottom: "24px", padding: "8px", width: "100%" }}>
                 {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
                 <svg height="1em" style={{ height: "20px", margin: "4px", width: "20px" }} viewBox="0 0 24 24" width="1em"
                   xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +47,7 @@ export const SignOutDialog = ({ isOpen, onClose }: Props) => {
               </div>
 
               {submitError ? (
-                <div className="mb-[8px] flex w-full flex-row items-center justify-start rounded-[4px] border-[2px] border-solid border-[#F0163A] bg-[#ffeeee] p-[8px] text-[14px] font-bold text-[#F0163A]">
+                <div style={{ alignItems: "center", backgroundColor: "#ffeeee", border: "2px solid #F0163A", borderRadius: "4px", color: "#F0163A", display: "flex", flexDirection: "row", fontSize: "14px", fontWeight: "bold", justifyContent: "start", marginBottom: "8px", padding: "8px", width: "100%" }}>
                   {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
                   <svg height="1em" style={{ height: "20px", margin: "4px", width: "20px" }} viewBox="0 0 24 24" width="1em"
                     xmlns="http://www.w3.org/2000/svg">
@@ -57,9 +57,9 @@ export const SignOutDialog = ({ isOpen, onClose }: Props) => {
                 </div>
               ) : null}
 
-              <div className="flex flex-row justify-center">
+              <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
                 <button
-                  className="block flex w-[160px] flex-row items-center justify-center rounded-[4px] bg-[#1c43d1] p-[12px] text-[14px] font-bold text-[#ffffff] disabled:opacity-50"
+                  style={{ alignItems: "center", backgroundColor: "#1c43d1", borderRadius: "4px", color: "#ffffff", display: "flex", flexDirection: "row", fontSize: "14px", fontWeight: "bold", justifyContent: "center", padding: "12px", width: "160px" }}
                   type="submit"
                 >
                   ログアウト

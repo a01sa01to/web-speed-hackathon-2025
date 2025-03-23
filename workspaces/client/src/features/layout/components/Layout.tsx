@@ -218,7 +218,7 @@ export const Layout = ({ children }: Props) => {
             gridArea: isTimetablePage ? 'b2' : 'b2 / b2 / b3 / b3',
           }}
         >
-          <Flipper className="size-full" flipKey={location.key} spring="noWobble">
+          <Flipper flipKey={location.key} spring="noWobble" style={{ width: "100%", height: "100%" }}>
             {children}
           </Flipper>
         </main>

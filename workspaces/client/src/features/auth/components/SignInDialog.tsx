@@ -45,13 +45,13 @@ export const SignInDialog = ({ isOpen, onClose, onOpenSignUp }: Props) => {
 
   return (
     <Dialog isOpen={isOpen} onClose={onClose}>
-      <div className="size-full">
-        <div className="mb-[16px] flex w-full flex-row justify-center">
+      <div style={{ height: '100%', width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom: '16px', width: '100%' }}>
           {/* biome-ignore lint/a11y/useAltText: <explanation> */}
-          <img className="object-contain" height={36} src="https://wsh2025-a01sa01to.pages.dev/arema.svg" width={98} />
+          <img height={36} src="https://wsh2025-a01sa01to.pages.dev/arema.svg" style={{ objectFit: 'contain' }} width={98} />
         </div>
 
-        <h2 className="mb-[24px] text-center text-[24px] font-bold">ログイン</h2>
+        <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px', textAlign: 'center' }}>ログイン</h2>
 
         <Form
           validate={(values) => {
@@ -69,25 +69,38 @@ export const SignInDialog = ({ isOpen, onClose, onOpenSignUp }: Props) => {
           onSubmit={onSubmit}
         >
           {({ handleSubmit, hasValidationErrors, submitError, submitting }) => (
-            <form className="mb-[16px]" onSubmit={(ev) => void handleSubmit(ev)}>
+            <form style={{ marginBottom: '16px' }} onSubmit={(ev) => void handleSubmit(ev)}>
+              <style>{`
+                input::placeholder {
+                  color: #999999;
+                }
+              `}</style>
               <Field name="email">
                 {({ input, meta }) => {
                   return (
-                    <div className="mb-[24px]">
-                      <div className="mb-[8px] flex flex-row items-center justify-between text-[14px] font-bold">
-                        <label className="shrink-0 grow-0" htmlFor={emailId}>
+                    <div style={{ marginBottom: '24px' }}>
+                      <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', fontSize: '14px', fontWeight: 'bold', justifyContent: 'space-between', marginBottom: '8px' }}>
+                        <label htmlFor={emailId} style={{ flexGrow: 0, flexShrink: 0 }}>
                           メールアドレス
                         </label>
                         {meta.modified && Array.isArray(meta.error) ? (
-                          <span className="shrink-0 grow-0 text-[#F0163A]">{meta.error[0]}</span>
+                          <span style={{ color: '#F0163A', flexGrow: 0, flexShrink: 0 }}>{meta.error[0]}</span>
                         ) : null}
                       </div>
                       <input
                         {...input}
                         required
-                        className="w-full rounded-[4px] border-[2px] border-solid border-[#FFFFFF1F] bg-[#FFFFFF] p-[12px] text-[14px] text-[#212121] placeholder:text-[#999999]"
                         id={emailId}
                         placeholder="メールアドレスを入力"
+                        style={{
+                          backgroundColor: '#FFFFFF',
+                          border: '2px solid #FFFFFF1F',
+                          borderRadius: '4px',
+                          color: '#212121',
+                          fontSize: '14px',
+                          padding: '12px',
+                          width: '100%',
+                        }}
                         type="email"
                       />
                     </div>
@@ -98,21 +111,29 @@ export const SignInDialog = ({ isOpen, onClose, onOpenSignUp }: Props) => {
               <Field name="password">
                 {({ input, meta }) => {
                   return (
-                    <div className="mb-[24px]">
-                      <div className="mb-[8px] flex flex-row items-center justify-between text-[14px] font-bold">
-                        <label className="shrink-0 grow-0" htmlFor={passwordId}>
+                    <div style={{ marginBottom: '24px' }}>
+                      <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', fontSize: '14px', fontWeight: 'bold', justifyContent: 'space-between', marginBottom: '8px' }}>
+                        <label htmlFor={passwordId} style={{ flexGrow: 0, flexShrink: 0 }}>
                           パスワード
                         </label>
                         {meta.modified && Array.isArray(meta.error) ? (
-                          <span className="shrink-0 grow-0 text-[#F0163A]">{meta.error[0]}</span>
+                          <span style={{ color: '#F0163A', flexGrow: 0, flexShrink: 0 }}>{meta.error[0]}</span>
                         ) : null}
                       </div>
                       <input
                         {...input}
                         required
-                        className="w-full rounded-[4px] border-[2px] border-solid border-[#FFFFFF1F] bg-[#FFFFFF] p-[12px] text-[14px] text-[#212121] placeholder:text-[#999999]"
                         id={passwordId}
                         placeholder="パスワードを入力"
+                        style={{
+                          backgroundColor: '#FFFFFF',
+                          border: '2px solid #FFFFFF1F',
+                          borderRadius: '4px',
+                          color: '#212121',
+                          fontSize: '14px',
+                          padding: '12px',
+                          width: '100%',
+                        }}
                         type="password"
                       />
                     </div>
@@ -121,20 +142,36 @@ export const SignInDialog = ({ isOpen, onClose, onOpenSignUp }: Props) => {
               </Field>
 
               {submitError ? (
-                <div className="mb-[8px] flex w-full flex-row items-center justify-start rounded-[4px] border-[2px] border-solid border-[#F0163A] bg-[#ffeeee] p-[8px] text-[14px] font-bold text-[#F0163A]">
+                <div style={{ alignItems: 'center', backgroundColor: '#ffeeee', border: '2px solid #F0163A', borderRadius: '4px', color: '#F0163A', display: 'flex', flexDirection: 'row', fontSize: '14px', fontWeight: 'bold', justifyContent: 'flex-start', marginBottom: '8px', padding: '8px', width: "100%" }}>
                   {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-                  <svg height="1em" style={{ height: "20px", margin: "4px", width: "20px" }} viewBox="0 0 24 24" width="1em"
-                    xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    style={{ height: '20px', margin: '4px', width: '20px' }}
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path d="M12 17q.425 0 .713-.288T13 16t-.288-.712T12 15t-.712.288T11 16t.288.713T12 17m-1-4h2V7h-2zm1 9q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8" fill="currentColor" />
                   </svg>
                   <span>{submitError}</span>
                 </div>
               ) : null}
 
-              <div className="flex flex-row justify-center">
+              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                 <button
-                  className="block flex w-[160px] flex-row items-center justify-center rounded-[4px] bg-[#1c43d1] p-[12px] text-[14px] font-bold text-[#ffffff] disabled:opacity-50"
                   disabled={submitting || hasValidationErrors}
+                  style={{
+                    alignItems: 'center',
+                    backgroundColor: '#1c43d1',
+                    borderRadius: '4px',
+                    color: '#ffffff',
+                    display: 'flex',
+                    flexDirection: "row",
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    justifyContent: 'center',
+                    opacity: submitting || hasValidationErrors ? 0.5 : 1,
+                    padding: '12px',
+                    width: '160px',
+                  }}
                   type="submit"
                 >
                   ログイン
@@ -144,9 +181,15 @@ export const SignInDialog = ({ isOpen, onClose, onOpenSignUp }: Props) => {
           )}
         </Form>
 
-        <div className="flex flex-row justify-center">
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
           <button
-            className="block bg-transparent text-[14px] text-[#999999] underline"
+            style={{
+              backgroundColor: 'transparent',
+              color: '#999999',
+              display: 'block',
+              fontSize: '14px',
+              textDecoration: 'underline',
+            }}
             type="button"
             onClick={onOpenSignUp}
           >

@@ -1,5 +1,5 @@
-import * as HeadlessUi from '@headlessui/react';
-import { ReactNode } from 'react';
+import { Dialog as HDialog, DialogPanel } from '@headlessui/react';
+import type { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -9,14 +9,35 @@ interface Props {
 
 export const Dialog = ({ children, isOpen, onClose }: Props) => {
   return (
-    <HeadlessUi.Dialog
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#00000077]"
+    <HDialog
       open={isOpen}
+      style={{
+        alignItems: 'center',
+        backgroundColor: '#00000077',
+        bottom: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        left: 0,
+        position: 'fixed',
+        right: 0,
+        top: 0,
+        zIndex: 50,
+      }}
       onClose={onClose}
     >
-      <HeadlessUi.DialogPanel className="w-[480px] shrink-0 grow-0 rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F] bg-[#171717] px-[16px] py-[32px]">
+      <DialogPanel
+        style={{
+          backgroundColor: '#171717',
+          border: '2px solid #FFFFFF1F',
+          borderRadius: '8px',
+          flexGrow: 0,
+          flexShrink: 0,
+          padding: '32px 16px',
+          width: '480px',
+        }}
+      >
         {children}
-      </HeadlessUi.DialogPanel>
-    </HeadlessUi.Dialog>
+      </DialogPanel>
+    </HDialog>
   );
 };

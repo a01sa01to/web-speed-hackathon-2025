@@ -23,38 +23,60 @@ export const ProgramDetailDialog = ({ isOpen, program }: Props): ReactElement =>
 
   return (
     <Dialog isOpen={isOpen} onClose={onClose}>
-      <div className="h-75vh size-full overflow-auto">
-        <h2 className="mb-[24px] text-center text-[24px] font-bold">番組詳細</h2>
+      <div style={{ height: '75vh', overflow: 'auto', width: '100%' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px', textAlign: 'center' }}>番組詳細</h2>
 
-        <p className="mb-[8px] text-[14px] font-bold text-[#ffffff]">{program.title}</p>
-        <div className="mb-[16px] text-[14px] text-[#999999]">
-          <div className="line-clamp-5">{program.description}</div>
+        <p style={{ color: '#ffffff', fontSize: '14px', fontWeight: 'bold', marginBottom: '8px' }}>{program.title}</p>
+        <div style={{ color: '#999999', fontSize: '14px', marginBottom: '16px' }}>
+          <div style={{ display: '-webkit-box', overflow: 'hidden', WebkitBoxOrient: 'vertical', WebkitLineClamp: 5 }}>{program.description}</div>
         </div>
         <img
           alt=""
-          className="mb-[24px] w-full rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]"
-          decoding="async" loading="lazy" src={thumbUrl(program.thumbnailUrl, "md")}
+          decoding="async"
+          loading="lazy" src={thumbUrl(program.thumbnailUrl, "md")} style={{
+            border: '2px solid #ffffff1f',
+            borderRadius: '8px',
+            marginBottom: '24px',
+            width: '100%',
+          }}
         />
 
         {episode != null ? (
           <>
-            <h3 className="mb-[24px] text-center text-[24px] font-bold">番組で放送するエピソード</h3>
+            <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '24px', textAlign: 'center' }}>番組で放送するエピソード</h3>
 
-            <p className="mb-[8px] text-[14px] font-bold text-[#ffffff]">{episode.title}</p>
-            <div className="mb-[16px] text-[14px] text-[#999999]">
-              <div className="line-clamp-5">{episode.description}</div>
+            <p style={{ color: '#ffffff', fontSize: '14px', fontWeight: 'bold', marginBottom: '8px' }}>{episode.title}</p>
+            <div style={{ color: '#999999', fontSize: '14px', marginBottom: '16px' }}>
+              <div style={{ display: '-webkit-box', overflow: 'hidden', WebkitBoxOrient: 'vertical', WebkitLineClamp: 5 }}>{episode.description}</div>
             </div>
             <img
               alt=""
-              className="mb-[24px] w-full rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]"
-              decoding="async" loading="lazy" src={thumbUrl(episode.thumbnailUrl, "md")}
+              decoding="async"
+              loading="lazy" src={thumbUrl(episode.thumbnailUrl, "md")} style={{
+                border: '2px solid #ffffff1f',
+                borderRadius: '8px',
+                marginBottom: '24px',
+                width: '100%',
+              }}
             />
           </>
         ) : null}
 
-        <div className="flex flex-row justify-center">
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
           <Link
-            className="block flex w-[160px] flex-row items-center justify-center rounded-[4px] bg-[#1c43d1] p-[12px] text-[14px] font-bold text-[#ffffff] disabled:opacity-50"
+            style={{
+              alignItems: 'center',
+              backgroundColor: '#1c43d1',
+              borderRadius: '4px',
+              color: '#ffffff',
+              display: 'flex',
+              flexDirection: 'row',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              justifyContent: 'center',
+              padding: '12px',
+              width: '160px',
+            }}
             to={`/programs/${program.id}`}
             onClick={onClose}
           >

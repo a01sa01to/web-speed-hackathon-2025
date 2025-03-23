@@ -32,27 +32,27 @@ export const SeriesPage = () => {
     <>
       <title>{`${series.title} - AremaTV`}</title>
 
-      <div className="m-auto px-[24px] py-[48px]">
-        <header className="mb-[24px] flex w-full flex-row items-start justify-between gap-[24px]">
+      <div style={{ margin: 'auto', padding: '48px 24px' }}>
+        <header style={{ marginBottom: '24px', display: 'flex', width: '100%', flexDirection: 'row', alignItems: 'start', justifyContent: 'space-between', gap: '24px' }}>
           <Flipped stagger flipId={`series-${series.id}`}>
             <img
               alt=""
-              className="h-auto w-[400px] shrink-0 grow-0 rounded-[8px] border-[2px] border-solid border-[#FFFFFF1F]"
+              style={{ height: 'auto', width: '400px', flexShrink: 0, flexGrow: 0, borderRadius: '8px', border: '2px solid #FFFFFF1F' }}
               decoding="sync" loading="eager" src={thumbUrl(series.thumbnailUrl, "lg")}
             />
           </Flipped>
-          <div className="grow-1 shrink-1 overflow-hidden">
-            <h1 className="mb-[16px] text-[32px] font-bold text-[#ffffff]">
+          <div style={{ flexGrow: 1, flexShrink: 1, overflow: 'hidden' }}>
+            <h1 style={{ marginBottom: '16px', fontSize: '32px', fontWeight: 'bold', color: '#ffffff' }}>
               <Ellipsis ellipsis reflowOnResize maxLine={2} text={series.title} visibleLine={2} />
             </h1>
-            <div className="text-[14px] text-[#999999]">
+            <div style={{ fontSize: '14px', color: '#999999' }}>
               <Ellipsis ellipsis reflowOnResize maxLine={3} text={series.description} visibleLine={3} />
             </div>
           </div>
         </header>
 
-        <div className="mb-[24px]">
-          <h2 className="mb-[12px] text-[22px] font-bold text-[#ffffff]">エピソード</h2>
+        <div style={{ marginBottom: '24px' }}>
+          <h2 style={{ marginBottom: '12px', fontSize: '22px', fontWeight: 'bold', color: '#ffffff' }}>エピソード</h2>
           <SeriesEpisodeList episodes={series.episodes} selectedEpisodeId={null} />
         </div>
 
