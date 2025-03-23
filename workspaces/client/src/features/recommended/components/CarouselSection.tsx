@@ -15,8 +15,6 @@ export const CarouselSection = ({ module }: Props) => {
 
   return (
     <>
-      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/recommended/carousel.css" rel="stylesheet" />
-
       <div className='h-root'>
         <h2 className="h-h2">{module.title}</h2>
         <div

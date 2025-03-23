@@ -26,8 +26,6 @@ export const SignOutDialog = ({ isOpen, onClose }: Props) => {
 
   return (
     <>
-      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/auth/signout.css" rel="stylesheet" />
-
       <Dialog isOpen={isOpen} onClose={onClose}>
         <div className="b-div1">
           <div className="b-div2">

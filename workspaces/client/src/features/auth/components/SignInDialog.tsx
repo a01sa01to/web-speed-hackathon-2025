@@ -45,8 +45,6 @@ export const SignInDialog = ({ isOpen, onClose, onOpenSignUp }: Props) => {
 
   return (
     <>
-      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/auth/signin.css" rel="stylesheet" />
-
       <Dialog isOpen={isOpen} onClose={onClose}>
         <div className="a-adiv">
           <div className='a-bdiv'>

@@ -23,7 +23,6 @@ export const JumbotronSection = ({ module }: Props) => {
 
   return (
     <>
-      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/recommended/jumbo.css" rel="stylesheet" />
 
       <NavLink
         viewTransition

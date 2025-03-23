@@ -53,8 +53,6 @@ export const Layout = ({ children }: Props) => {
 
   return (
     <>
-      <link href="https://wsh2025-a01sa01to.pages.dev/styles/feat/layout.css" rel="stylesheet" />
-
       <div className="e-div">
         <header
           className="e-header"
