@@ -11,8 +11,13 @@ async function main() {
 
   const app = fastify();
 
-  app.addHook('onSend', async (_req, reply) => {
-    reply.header('cache-control', 'private, max-age=86400')
+  app.addHook('onSend', async (req, reply) => {
+    if (req.raw.url?.includes("/streams/channel")) {
+      reply.header('cache-control', 'no-store')
+    }
+    else {
+      reply.header('cache-control', 'private, max-age=86400')
+    }
   });
   app.register(cors, {
     origin: true,

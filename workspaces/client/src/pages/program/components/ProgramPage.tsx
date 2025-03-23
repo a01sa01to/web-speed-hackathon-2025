@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Ellipsis from 'react-ellipsis-component';
 import { Flipped } from 'react-flip-toolkit';
 import { Link, type Params, useNavigate, useParams } from 'react-router';
@@ -51,30 +51,27 @@ export const ProgramPage = () => {
 
   const forceUpdate = useUpdate();
   const navigate = useNavigate();
-  const isArchivedRef = useRef(dayjs(program.endAt).isBefore(dayjs().tz()));
+  const [isArchived, setIsArchived] = useState(dayjs(program.endAt).isBefore(dayjs().tz()));
   const isBroadcastStarted = dayjs(program.startAt).isBefore(dayjs().tz());
+
   useEffect(() => {
-    if (isArchivedRef.current) {
-      return;
-    }
+    if (dayjs(program.endAt).isBefore(dayjs().tz())) return;
 
     // 放送前であれば、放送開始になるまで待機
     if (!isBroadcastStarted) {
-      let timeout = setTimeout(function tick() {
-        forceUpdate()
-        timeout = setTimeout(tick, 1000)
-      }, 1000)
+      const interval = setInterval(() => {
+        if (dayjs().tz().isBefore(dayjs(program.startAt))) return;
+        clearInterval(interval);
+        forceUpdate();
+      }, 1000);
       return () => {
-        clearTimeout(timeout);
+        clearInterval(interval);
       };
     }
 
     // 放送中に次の番組が始まったら、画面をそのままにしつつ、情報を次の番組にする
-    let timeout = setTimeout(function tick() {
-      if (dayjs().tz().isBefore(dayjs(program.endAt))) {
-        timeout = setTimeout(tick, 1000);
-        return;
-      }
+    const interval = setInterval(() => {
+      if (dayjs().tz().isBefore(dayjs(program.endAt))) return;
       if (nextProgram?.id) {
         void navigate(`/programs/${nextProgram.id}`, {
           preventScrollReset: true,
@@ -82,14 +79,14 @@ export const ProgramPage = () => {
           state: { loading: 'none' },
         });
       } else {
-        isArchivedRef.current = true;
+        setIsArchived(true);
         forceUpdate();
       }
     }, 1000)
     return () => {
-      clearTimeout(timeout);
+      clearInterval(interval);
     };
-  }, [isBroadcastStarted, nextProgram?.id]);
+  }, [isBroadcastStarted, nextProgram?.id, program.endAt, program.startAt, forceUpdate, navigate]);
 
   return (
     <>
@@ -105,7 +102,7 @@ export const ProgramPage = () => {
               outline: '1px solid #212121',
             }}
           >
-            {isArchivedRef.current ? (
+            {isArchived ? (
               <div style={{ height: '100%', position: 'relative', width: '100%' }}>
                 <img
                   alt=""
